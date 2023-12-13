@@ -1,0 +1,5 @@
+# Ignorer les fichiers générés par IntelliJ IDEA
+.idea
+*.iws
+*.iml
+*.ipr
