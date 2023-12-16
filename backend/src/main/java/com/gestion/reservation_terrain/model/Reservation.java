@@ -21,21 +21,11 @@ public class Reservation {
 
     private String etat;
 
-    @ManyToOne(
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            }
-    )
+    @ManyToOne
     @JoinColumn(name = "uuid_user")
     private User user;
 
-    @ManyToOne(
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            }
-    )
+    @ManyToOne
     @JoinColumn(name = "uuid_terrain")
     private Terrain terrain;
 

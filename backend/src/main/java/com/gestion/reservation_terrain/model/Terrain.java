@@ -63,12 +63,7 @@ public class Terrain {
             inverseJoinColumns = @JoinColumn(name = "uuid_service")
     )
     private List<Service> services = new ArrayList<>();
-    @ManyToOne(
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            }
-    )
+    @ManyToOne
     @JoinColumn(name = "proprietaire")
     private ProprietaireTerrain proprietaire;
 }
