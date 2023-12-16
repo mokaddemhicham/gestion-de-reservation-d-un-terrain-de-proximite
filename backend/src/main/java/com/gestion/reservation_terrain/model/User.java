@@ -1,5 +1,6 @@
 package com.gestion.reservation_terrain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -29,6 +30,7 @@ public class User {
             mappedBy = "user",
             orphanRemoval = true
     )
+    @JsonIgnore
     private List<Reservation> reservations = new ArrayList<>();
 
     public User(String nom, String prenom, String email, String telephone, String password) {

@@ -1,5 +1,6 @@
 package com.gestion.reservation_terrain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -24,6 +25,7 @@ public class Paiement {
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     @JoinColumn(name = "uuid")
+    @JsonIgnore
     private Reservation reservation;
 
 }

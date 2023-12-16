@@ -48,6 +48,7 @@ public class Terrain {
             joinColumns = @JoinColumn(name = "uuid_terrain"),
             inverseJoinColumns = @JoinColumn(name = "uuid_disponibilite")
     )
+    @JsonIgnore
     private List<Disponibilite> disponibilites = new ArrayList<>();
 
     @ManyToMany(
@@ -62,8 +63,11 @@ public class Terrain {
             joinColumns = @JoinColumn(name = "uuid_terrain"),
             inverseJoinColumns = @JoinColumn(name = "uuid_service")
     )
+    @JsonIgnore
     private List<Service> services = new ArrayList<>();
+
     @ManyToOne
     @JoinColumn(name = "proprietaire")
+    @JsonIgnore
     private ProprietaireTerrain proprietaire;
 }
