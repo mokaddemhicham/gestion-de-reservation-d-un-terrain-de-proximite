@@ -26,12 +26,10 @@ public class Reservation {
 
     @ManyToOne
     @JoinColumn(name = "uuid_user")
-    @JsonIgnore
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "uuid_terrain")
-    @JsonIgnore
     private Terrain terrain;
 
     @OneToOne(
@@ -40,7 +38,6 @@ public class Reservation {
             fetch = FetchType.LAZY
     )
     @PrimaryKeyJoinColumn
-    @JsonIgnore
     private Paiement paiement;
 
 }

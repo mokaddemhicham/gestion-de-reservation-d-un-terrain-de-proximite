@@ -57,7 +57,12 @@ Le projet de Réservation de Terrains est une application web conçue pour simpl
 2. Assurez-vous d'avoir toutes les dépendances requises installées (voir les deux fichiers `package.json` et `pom.xml`).
 3. Exécutez l'application en suivant les instructions spécifiques au langage et au framework.
 
-## Perspectives Futures
+## Équipe de Développement
 
-Le projet pourrait évoluer en intégrant des fonctionnalités telles que la gestion des commentaires, la géolocalisation des terrains, ou encore des options de personnalisation avancées.
+Ce projet a été rendu possible grâce aux efforts de l'équipe de développement suivante :
 
+- **Hicham Mokaddem**
+   - GitHub: [mokaddemhicham](https://github.com/mokaddemhicham)
+
+- **Mohamed Louak**
+   - GitHub: [Mlouak](https://github.com/Mlouak)
