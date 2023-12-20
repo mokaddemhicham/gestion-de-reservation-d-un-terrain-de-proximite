@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 @Repository
 public interface DisponibiliteRepository extends JpaRepository<Disponibilite, UUID> {
+    Disponibilite findByJourAndHeureDebutAndHeureFin(String day, Integer heureDebut, Integer heureFin);
 }
