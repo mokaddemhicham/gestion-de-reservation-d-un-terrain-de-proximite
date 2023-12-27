@@ -10,5 +10,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'reservation-terrain';
+  title = 'Gestion de réservation d\'un terrain de proximité\n';
 }

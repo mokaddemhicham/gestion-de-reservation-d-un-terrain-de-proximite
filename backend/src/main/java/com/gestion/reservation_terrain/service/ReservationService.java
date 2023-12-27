@@ -51,5 +51,13 @@ public class ReservationService {
         }
     }
 
+    public Reservation saveReservation(Reservation reservation){
+        if (checkReservation(reservation.getTerrain(), reservation.getHeure(), reservation.getDate())){
+            reservation.setEtat("Comfirme");
+            return reservationRepository.save(reservation);
+        }else{
+            return null;
+        }
+    }
 
 }

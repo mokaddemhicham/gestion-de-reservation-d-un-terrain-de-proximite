@@ -21,12 +21,17 @@ public class ReservationController {
     }
 
     @GetMapping(path = "")
-    public Iterable<Reservation> getReservations(){
+    private Iterable<Reservation> getReservations(){
         return reservationService.getReservations();
     }
     @GetMapping(path = "/{uuid}")
     public Optional<Reservation> getReservation(@PathVariable UUID uuid){
         return reservationService.getReservation(uuid);
+    }
+
+    @PostMapping(path = "/add")
+    public Reservation reserver(@RequestBody Reservation reservation){
+        return reservationService.saveReservation(reservation);
     }
 
 }
