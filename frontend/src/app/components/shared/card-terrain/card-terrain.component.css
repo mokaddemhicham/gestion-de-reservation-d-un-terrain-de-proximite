@@ -1,0 +1,206 @@
+.terrain-card{
+  padding: 25px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 1px 7px 0 rgba(171,179,194,.4);
+  height: 100%;
+  position: relative;
+}
+
+.item_img{
+  position: relative;
+}
+
+.item_img .item-thumb {
+  position: relative;
+  display: block;
+  padding-top: 68%;
+  border-radius: 5px;
+  background-color: var(--lighterer);
+  overflow: hidden;
+}
+
+.item_img .item-thumb img {
+  max-width: 100%;
+  border: none;
+  box-shadow: none;
+  border-radius: 5px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  height: 100%;
+  -webkit-transition: all .35s ease;
+  transition: all .35s ease;
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.item_content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 8px 20px;
+  border-radius: 5px;
+  background-image: linear-gradient(transparent,rgba(0,0,0,0.8));
+  background-color: transparent;
+}
+
+.terrain-card .item_content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+.terrain-card .item_content .item_info_price {
+  line-height: 1;
+}
+
+.terrain-card .item_content .item_info_price .currency_amount,
+.terrain-card .item_content .rating .rating-score,
+.terrain-card .item_content .rating .rating-vote {
+  color: #fff !important;
+}
+.terrain-card .item_content .item_info_price .currency_amount {
+  font-size: 24px;
+  color: var(--accent);
+}
+.currency_amount {
+  font-weight: 700;
+}
+
+.terrain-card .item_content .rating {
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.terrain-card .item_content .rating i {
+  margin-right: 5px;
+  font-size: 16px;
+  color: #fc3;
+}
+
+.terrain-card .item_content .rating .rating-score {
+  font-size: 16px;
+  font-weight: 700;
+  margin-right: 5px;
+  line-height: normal;
+}
+
+.rating-score {
+  display: inline-block;
+  font-size: 52px;
+  color: var(--accent);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.terrain-card .item_content .rating .rating-vote {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--lighterer);
+}
+
+.terrain-card .item_text {
+  margin-top: 25px;
+}
+
+.terrain-card .item_title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: auto 0 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.terrain-card .item_title a {
+  color: var(--accent);
+  box-shadow: none;
+  text-decoration: none;
+}
+
+.terrain-card .item_text .item-meta {
+  margin-bottom: 30px;
+}
+.terrain-card .item_text .item-meta {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.terrain-card .item_text .item-meta .item-meta-value {
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+  flex: none;
+  font-size: 14px;
+  margin-right: 20px;
+  line-height: 1;
+}
+
+.terrain-card .item_text .item-meta i {
+  margin-right: 7px;
+  vertical-align: top;
+  color: var(--primary_hover);
+}
+
+.terrain-card .item_text .item-meta .item-location {
+  font-size: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1;
+}
+
+.terrain-card .read-more-item {
+  position: absolute;
+  right: 25px;
+  bottom: -6px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 5px;
+  line-height: 1;
+  padding: 13px 17px;
+  color: #fff;
+  background-color: #9eabb5;
+  box-shadow: none;
+  text-decoration: none;
+}
+
+.terrain-card .read-more-item i {
+  margin-left: 10px;
+  vertical-align: top;
+}
+
+.terrain-card:hover{
+  box-shadow: 0 3px 25px 0 rgba(171,179,194,.3);
+}
+
+.terrain-card:hover .read-more-item{
+  background-color: var(--primary);
+}
+
+.terrain-card:hover .item_img .item-thumb img {
+  -ms-transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}

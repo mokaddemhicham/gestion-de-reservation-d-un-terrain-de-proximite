@@ -1,0 +1,39 @@
+<div class="terrain-card">
+  <div class="item_img">
+    <a class="item-thumb" href="..">
+      <img decoding="async" src="{{ terrain.image }}" alt="Stadium">
+    </a>
+    <div class="item_content">
+      <div class="item_info_price">
+        <span class="currency_amount" data-amount="114"><span class="currency_symbol"></span>{{ terrain.price }}</span> </div>
+      <div class="rating">
+        <i class="bi bi-emoji-smile"></i>
+        <span class="rating-score">4</span>
+        <span class="rating-vote">(8 Reviews)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="item_text">
+    <div class="item_title">
+      <a href="..">{{ terrain.name }}</a>
+    </div>
+    <div class="item-meta">
+      <span class="item-user item-meta-value">
+        <span>Extras : </span>
+        <i *ngFor="let service of terrain.services" class="{{ service.icon }}"></i>
+      </span>
+
+      <span class="item-days item-meta-value">
+        <i class="bi bi-arrows-fullscreen"></i>
+        <span>{{ terrain.taille }}</span>
+      </span>
+
+      <div class="item-location">
+        <i class="bi bi-geo-alt-fill"></i>
+        <span>{{ terrain.location }}</span>
+      </div>
+    </div>
+    <a class="read-more-item" href="..">Book Now <i class="bi bi-caret-right-fill"></i></a>
+  </div>
+</div>

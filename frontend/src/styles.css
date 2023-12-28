@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 @font-face {
   font-family: followme;
   src: url(assets/fonts/new/followme-Bold.woff2) format("woff2"),
@@ -37,7 +39,7 @@
   font-display: swap;
 }
 @font-face {
-  font-family: followme slide;
+  font-family: 'followme slide';
   src: url(assets/fonts/new/followme-slide.woff2) format("woff2"),
   url(assets/fonts/new/followme-slide.woff) format("woff"),
   url(assets/fonts/new/followme-slide.svg) format("svg");
@@ -46,7 +48,7 @@
   font-display: swap;
 }
 html {
-  font-family: sans-serif;
+  font-family: followme, serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -247,7 +249,7 @@ input,
 textarea {
   color: var(--text);
   font-family: followme, helveticaneue-light, helvetica neue light,
-  helvetica neue, Helvetica, Arial, lucida grande, sans-serif;
+  helvetica neue, Helvetica, Arial, lucida grande, sans-serif !important;
   line-height: 2;
   text-rendering: optimizeLegibility;
   font-weight: 400;
@@ -255,7 +257,7 @@ textarea {
 select {
   color: initial;
   font-family: followme, helveticaneue-light, helvetica neue light,
-  helvetica neue, Helvetica, Arial, lucida grande, sans-serif;
+  helvetica neue, Helvetica, Arial, lucida grande, sans-serif !important;
   max-width: 100%;
 }
 h1,
@@ -265,7 +267,7 @@ h4,
 h5,
 h6 {
   font-family: followme, helveticaneue-light, helvetica neue light,
-  helvetica neue, Helvetica, Arial, lucida grande, sans-serif;
+  helvetica neue, Helvetica, Arial, lucida grande, sans-serif !important;
   clear: both;
   margin: 0 0 0.5407911001em;
   color: var(--accent);
@@ -374,5 +376,3 @@ em,
 i {
   font-style: italic;
 }
-
-
