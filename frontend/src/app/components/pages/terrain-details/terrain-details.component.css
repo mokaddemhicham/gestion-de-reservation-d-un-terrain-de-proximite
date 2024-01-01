@@ -1,0 +1,156 @@
+.carousel .carousel-inner {
+  height: 450px;
+}
+
+.carousel-item {
+  height: 100vh; /* Set the height based on your design */
+  /*background-size: contain;*/
+  background-position: center;
+  object-fit: contain;
+}
+
+
+.nav-tabs{
+  border-bottom: none;
+}
+
+
+.tab-title {
+  font-weight: 700;
+  padding: 8px 30px;
+  position: relative;
+  line-height: 22px;
+  margin-right: 10px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,.1);
+  -webkit-transition: border .2s ease,-webkit-transform .2s ease;
+  transition: border .2s ease,-webkit-transform .2s ease;
+  transition: border .2s ease,transform .2s ease;
+  transition: border .2s ease,transform .2s ease,-webkit-transform .2s ease;
+  text-align: center
+}
+
+.tab-title:last-child {
+  margin-right: 0
+}
+
+.tab-title {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.tab-title.active {
+  color: var(--primary);
+}
+
+.tab-title:before {
+  top: 95%;
+  border: solid transparent;
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  opacity: 0;
+  -webkit-transition: border-color .2s ease,opacity .2s ease,top .2s ease,-webkit-transform .2s ease;
+  transition: border-color .2s ease,opacity .2s ease,top .2s ease,-webkit-transform .2s ease;
+  transition: border-color .2s ease,opacity .2s ease,top .2s ease,transform .2s ease;
+  transition: border-color .2s ease,opacity .2s ease,top .2s ease,transform .2s ease,-webkit-transform .2s ease
+}
+
+.tab-title:after {
+  border-color: transparent;
+  border-top-color: #fff;
+  border-width: 5px;
+  left: 50%;
+  margin-left: -5px
+}
+
+.tab-title:before {
+  border-color: transparent;
+  border-top-color: var(--primary);
+  border-width: 8px;
+  left: 50%;
+  margin-left: -8px;
+}
+
+.tab-title:hover,
+.tab-title:focus,
+.tab-title:active,
+.tab-title.active {
+  border-color: var(--primary);
+  color: var(--primary);
+  -webkit-transition: all .2s ease,-webkit-transform .2s ease;
+  transition: all .2s ease,-webkit-transform .2s ease;
+  transition: all .2s ease,transform .2s ease;
+  transition: all .2s ease,transform .2s ease,-webkit-transform .2s ease
+}
+
+.tab-title:hover:after,
+.tab-title:hover:before,
+.tab-title:focus:after,
+.tab-title:focus:before,
+.tab-title:active:after,
+.tab-title:active:before,
+.tab-title.active:after,
+.tab-title.active:before {
+  opacity: 1;
+  top: 100%;
+  -webkit-transition: border-color .2s ease,opacity .2s ease,top .2s ease,-webkit-transform .2s ease;
+  transition: border-color .2s ease,opacity .2s ease,top .2s ease,-webkit-transform .2s ease;
+  transition: border-color .2s ease,opacity .2s ease,top .2s ease,transform .2s ease;
+  transition: border-color .2s ease,opacity .2s ease,top .2s ease,transform .2s ease,-webkit-transform .2s ease
+}
+
+
+.reservation{
+  width: 100%;
+  height: 500px;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 0 3px 25px 0 rgba(171,179,194,.3)
+}
+
+.reservation .reservation-title{
+  font-size: 20px;
+  line-height: 24px;
+  text-align: left;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.btn-reservation{
+  border: none;
+  border-radius: 3px;
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  padding: 1.094rem 2rem;
+  text-decoration: none;
+  text-shadow: none;
+  display: inline-block;
+  -webkit-appearance: none;
+  font-weight: 700;
+  -webkit-transition: all 0.25s ease-in-out 0s;
+  transition: all 0.25s ease-in-out 0s;
+  width: 100%;
+  font-size: 1rem;
+  letter-spacing: normal;
+  line-height: 1.5;
+}
+
+.btn-reservation:hover{
+  background-color: var(--primary_hover);
+  border-color: var(--primary_hover);
+}
+
+.terrain-name{
+  color: var(--accent);
+  font-size: 30px;
+  font-weight: 500;
+  padding: 0;
+  line-height: 1;
+  margin: 0 0 20px
+}

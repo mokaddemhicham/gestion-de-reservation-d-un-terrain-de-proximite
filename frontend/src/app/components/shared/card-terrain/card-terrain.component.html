@@ -34,6 +34,6 @@
         <span>{{ terrain.location }}</span>
       </div>
     </div>
-    <a class="read-more-item" href="..">Book Now <i class="bi bi-caret-right-fill"></i></a>
+    <a class="read-more-item" [routerLink]="['/terrain', terrain.id]">Book Now <i class="bi bi-caret-right-fill"></i></a>
   </div>
 </div>
