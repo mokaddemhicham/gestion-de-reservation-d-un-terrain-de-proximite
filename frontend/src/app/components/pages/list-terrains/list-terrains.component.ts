@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import {CardTerrainComponent} from "../../shared/card-terrain/card-terrain.component";
 import {NgForOf} from "@angular/common";
+import {TerrainSearchComponent} from "../../shared/terrain-search/terrain-search.component";
 
 @Component({
   selector: 'app-list-terrains',
   standalone: true,
   imports: [
     CardTerrainComponent,
-    NgForOf
+    NgForOf,
+    TerrainSearchComponent
   ],
   templateUrl: './list-terrains.component.html',
   styleUrl: './list-terrains.component.css'

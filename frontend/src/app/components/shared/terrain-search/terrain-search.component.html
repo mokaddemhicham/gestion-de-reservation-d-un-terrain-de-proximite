@@ -1,0 +1,60 @@
+<div class="border mx-auto justify-content-center" id="search-bar" >
+  <div class="row mx-auto justify-content-center">
+    <div class="col-sm-12 col-md-2">
+      <div class="header-form text-center">
+        <div class="form_subtitle fs-5 text-md fs-6">Find Your </div>
+        <h3 class="form_title">Destinations</h3>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-8">
+      <form action="/destinations" class="row " method="get">
+        <div class="row my-3 mx-auto">
+
+          <!-- Destination Input -->
+          <div class="col-sm-6 col-md-3 mb-2 m-md-0 ">
+            <div class="form-control d-flex rounded mx-auto custom-width lh-lg ">
+                                <span class="icon-group-text pe-1"><i
+                                  class="fas fa-map-marker-alt text-success mt-1"></i></span>
+              <input type="text" class="w-100" style="border: none; outline: none;" name="destination"
+                     placeholder="Destination">
+            </div>
+          </div>
+
+          <!-- Type Input -->
+          <div class="col-sm-6 col-md-3 mb-2 m-md-0">
+            <div class="form-control d-flex rounded lh-lg">
+                                <span class="icon-group-text pe-1"><i
+                                  class="fa-brands fa-centos text-success"></i></span>
+              <input type="text" class="w-50 w-sm-auto" style="outline: none; border: none;"
+                     name="type" placeholder="Type">
+            </div>
+          </div>
+
+          <!-- Date Input -->
+          <div class="col-sm-6 col-md-3 mb-2 m-md-0">
+            <div class="form-control d-flex rounded lh-lg">
+                                <span class="icon-group-text pe-1"><i
+                                  class="fas fa-calendar-day text-success"></i></span>
+              <input type="text" class="w-100" id="datepicker" placeholder="date"
+                     style="outline: none; border: none; padding-bottom: 2px;" name="date">
+            </div>
+          </div>
+
+          <!-- Guests Input -->
+          <div class="col-sm-6 col-md-3 mb-2 m-md-0">
+            <div class="form-control d-flex rounded lh-lg">
+              <span class="icon-group-text pe-1"><i class="fas fa-user text-success"></i></span>
+              <input type="number" class="w-100" style="border: none; outline: none;" name="guests"
+                     placeholder="Invités">
+            </div>
+          </div>
+        </div>
+        <!-- Submit Button -->
+
+      </form>
+    </div>
+    <div class="col-sm-12 col-md-2 my-3 ">
+      <button type="submit" class="btn btn-success rounded recherche lh-lg ">Rechercher</button>
+    </div>
+  </div>
+</div>
