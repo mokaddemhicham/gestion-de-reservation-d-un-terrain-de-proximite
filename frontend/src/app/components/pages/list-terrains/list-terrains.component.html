@@ -17,41 +17,44 @@
     </div>
   </div>
 </section>
-<app-terrain-search></app-terrain-search>
-<div class="babe_search_results_filters">
-  <div class="count-posts">
-    <span class="count">Showing 1-9 of 20</span>
-    results </div>
-  <div class="filter-sort"><span>Sort by</span><div class="input_select_field input_select_field_sr_sort_by " data-name="sr_sort_by" tabindex="0">
-    <a class="input_select_sort" href="">
-      <i class="fa fa-sort-alpha-down"></i>
-    </a>
-  </div>
-    <div class="input_select_field input_select_field_sr_sort_by ">
-      <form class="input_select_title">
-        <select class="form-select" name="sr_sort_by">
-          <option value="title_desc">Title (desc)</option>
-          <option value="title_asc">Title (asc)</option>
-          <option value="date_desc">Date (desc)</option>
-          <option value="date_asc">Date (asc)</option>
-          <option value="price_desc">Price (desc)</option>
-          <option value="price_asc">Price (asc)</option>
-        </select>
-      </form>
+
+<div class="container">
+  <app-terrain-search></app-terrain-search>
+  <div class="babe_search_results_filters mt-5">
+    <div class="count-posts">
+      <span class="count">Showing 1-9 of 20</span>
+      results </div>
+    <div class="filter-sort"><span>Sort by</span><div class="input_select_field input_select_field_sr_sort_by " data-name="sr_sort_by" tabindex="0">
+      <a class="input_select_sort" href="">
+        <i class="fa fa-sort-alpha-down"></i>
+      </a>
+    </div>
+      <div class="input_select_field input_select_field_sr_sort_by ">
+        <form class="input_select_title">
+          <select class="form-select" name="sr_sort_by">
+            <option value="title_desc">Title (desc)</option>
+            <option value="title_asc">Title (asc)</option>
+            <option value="date_desc">Date (desc)</option>
+            <option value="date_asc">Date (asc)</option>
+            <option value="price_desc">Price (desc)</option>
+            <option value="price_asc">Price (asc)</option>
+          </select>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 
 
-<div class="row">
-  <div class="col-md-4 mb-5" *ngFor="let terrain of terrains">
-    <app-card-terrain [terrain]="terrain"></app-card-terrain>
+  <div class="row">
+    <div class="col-md-4 mb-5" *ngFor="let terrain of terrains">
+      <app-card-terrain [terrain]="terrain"></app-card-terrain>
+    </div>
   </div>
-</div>
 
-<div class="babe_pager">
-  <span aria-current="page" class="page-numbers current">1</span>
-  <a class="page-numbers" href="page/2/index.htm?paged=2">2</a>
-  <a class="page-numbers" href="page/3/index.htm?paged=3">3</a>
-  <a class="next page-numbers" href="page/2/index.htm?paged=2">Next »</a>
+  <div class="babe_pager">
+    <span aria-current="page" class="page-numbers current">1</span>
+    <a class="page-numbers" href="page/2/index.htm?paged=2">2</a>
+    <a class="page-numbers" href="page/3/index.htm?paged=3">3</a>
+    <a class="next page-numbers" href="page/2/index.htm?paged=2">Next »</a>
+  </div>
 </div>
