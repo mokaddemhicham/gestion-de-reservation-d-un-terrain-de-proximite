@@ -1,0 +1,23 @@
+<header class="header d-flex justify-content-center m-auto custom " [ngClass]="{'fixed': isFixed}">
+  <div class="container">
+    <div class="nav-bar">
+      <div class="logo"><a routerLink="/"><img src="assets/images/Logo_UEFA_Champions_League.png" alt="logo" class="img-fluid"></a></div>
+      <ul>
+        <li><a routerLink="/" class="active nav-link" >Accueil</a></li>
+        <li><a routerLink="/events" class="Papyrus" >Evénements</a></li>
+        <!-- Add similar lines for other routes -->
+        <li><a routerLink="/terrains" class="nav-link" >Terrains</a></li>
+        <li><a routerLink="/about">A propos</a></li>
+        <li><a routerLink="/contact" >Contact</a></li>
+      </ul>
+      <div class="right-nav">
+        <div class="contact-us"><a routerLink="/contact" class="nav-link">Resérver</a></div>
+        <div class="Hamburger_button" (click)="toggleMenu()">
+          <span id="s1"></span>
+          <span id="s2"></span>
+          <span id="s3"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,61 @@
+/* navigation.component.css */
+.custom-navbar {
+
+  z-index: 100000;
+}
+
+.navbar-box-shadow {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  /* Adjust shadow properties as needed */
+}
+
+/* Add styling based on scroll position */
+.custom-navbar.scrolled {
+  top: -7px; /* Adjust this value based on the height of your top navbar */
+}
+
+.custom-navbar.scrolled.navbar-box-shadow {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  /* Adjust shadow properties as needed */
+}
+.customise-font{
+  padding: 1em 1.6em;
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.custom-btn{
+  font-size: 14px;
+  font-weight: 600;
+  fill: #33a457 !important;
+  color: #33a457 !important;
+  background-color: #02010100;
+  border-style: solid ;
+  border-width: 2px;
+  border-radius: 5px 5px 5px 5px;
+  padding: 12px 25px;
+}
+.custom-btn:hover{
+  background-color: #33a457;
+  color: #fff !important;
+  fill: #fff !important;
+}
+.custom-navbar {
+  min-height: 90px;
+}
+.active{
+  color: var(--primary) !important;
+}
+a{
+  cursor: pointer;
+}
+a:hover{
+  color: var(--primary) !important;
+}
+.fixed-navbar {
+  padding-bottom: 0 !important; /* Adjust the height as needed */
+  padding-top: 0 !important;
+  transition: padding 0.3s ease; /* Add a smooth transition effect */
+  z-index: 10000;
+}

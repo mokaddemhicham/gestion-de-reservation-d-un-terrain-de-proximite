@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 
 @font-face {
   font-family: followme;
@@ -236,6 +238,7 @@ th {
   --accent: #000000;
   --lighterer: #9eabb5;
   --border: #e5e5e5;
+  --text-size: 14px;
 }
 body {
   -ms-word-wrap: break-word;

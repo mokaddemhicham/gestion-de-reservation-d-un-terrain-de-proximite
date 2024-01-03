@@ -33,13 +33,21 @@ button.recherche {
 }
 #search-bar{
   margin-top: -90px;
-  position: relative; z-index: 10000;
+  position: relative; z-index: 900;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   background: white;
   margin-bottom: 15px;
   border-radius: 15px;
 }
-@media (min-width: 768px) and (max-width: 992px) {
+.new-font{
+  font-size: var(--text-size);
+}
+.form_title{
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1em;
+}
+@media (min-width: 768px) and (max-width: 1200px) {
   .header-form {
     text-align: center;
     padding-top: 10px;
@@ -61,7 +69,6 @@ button.recherche {
     width: 100%;
     /* Make the button full width on tablets */
     font-size: 14px;
-  ;
     text-align: left;
     padding: 8px 20px;
 

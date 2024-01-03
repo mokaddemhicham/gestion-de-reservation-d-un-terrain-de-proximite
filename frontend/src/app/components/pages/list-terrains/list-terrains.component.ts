@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import {CardTerrainComponent} from "../../shared/card-terrain/card-terrain.component";
 import {NgForOf} from "@angular/common";
 import {TerrainSearchComponent} from "../../shared/terrain-search/terrain-search.component";
+import {InfoTabComponent} from "../../shared/info-tab/info-tab.component";
+import {NavigationComponent} from "../../shared/navigation/navigation.component";
+import {MySwiperComponent} from "../../shared/my-swiper/my-swiper.component";
+import {HichamNavComponent} from "../../shared/hicham-nav/hicham-nav.component";
+import {FooterComponent} from "../../shared/footer/footer.component";
 
 @Component({
   selector: 'app-list-terrains',
@@ -9,7 +14,12 @@ import {TerrainSearchComponent} from "../../shared/terrain-search/terrain-search
   imports: [
     CardTerrainComponent,
     NgForOf,
-    TerrainSearchComponent
+    TerrainSearchComponent,
+    InfoTabComponent,
+    NavigationComponent,
+    MySwiperComponent,
+    HichamNavComponent,
+    FooterComponent
   ],
   templateUrl: './list-terrains.component.html',
   styleUrl: './list-terrains.component.css'
