@@ -1,16 +1,18 @@
 import {Component, ElementRef, HostListener, Renderer2} from '@angular/core';
 import {NgClass} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
-  selector: 'app-hicham-nav',
+  selector: 'app-nav-bar',
   standalone: true,
   imports: [
-    NgClass
+    NgClass,
+    RouterLink
   ],
-  templateUrl: './hicham-nav.component.html',
-  styleUrl: './hicham-nav.component.css'
+  templateUrl: './nav-bar.component.html',
+  styleUrl: './nav-bar.component.css'
 })
-export class HichamNavComponent {
+export class NavBarComponent {
   isFixed: boolean = false;
   showScrollButton: boolean = false;
   isMenuActive: boolean = false;
@@ -33,7 +35,6 @@ export class HichamNavComponent {
 
   private toggleActiveClass(selector: string, className: string, condition: boolean = true): void {
     const element = this.el.nativeElement.querySelector(selector);
-    // console.log(element);element.classList.contains(className)
     if (element) {
 
       if (element.classList.contains(className)) {
@@ -47,7 +48,6 @@ export class HichamNavComponent {
   }
   private toggleClass(selector: string, className: string, condition: boolean = true): void {
     const element = this.el.nativeElement.querySelector(selector);
-    // console.log(element);element.classList.contains(className)
     if (element) {
 
       if (condition) {

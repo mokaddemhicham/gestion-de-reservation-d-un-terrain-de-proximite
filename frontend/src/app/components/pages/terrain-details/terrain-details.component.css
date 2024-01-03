@@ -374,6 +374,14 @@ blockquote:before {
   display: block;
 }
 
+.timeslots input[type=radio]:checked + label .dp-label{
+  display: block;
+}
+
+.timeslots input[type=radio]:checked + label{
+  background-color: #04bb03;
+}
+
 
 #total_group {
   margin-bottom: 5px;
