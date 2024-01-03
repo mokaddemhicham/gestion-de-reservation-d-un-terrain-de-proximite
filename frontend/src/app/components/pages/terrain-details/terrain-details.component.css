@@ -1,12 +1,46 @@
 .carousel .carousel-inner {
-  height: 450px;
+  height: 400px;
 }
 
 .carousel-item {
-  height: 100vh; /* Set the height based on your design */
-  /*background-size: contain;*/
+  height: 100vh;
   background-position: center;
   object-fit: contain;
+}
+
+.carousel-image{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.4);
+}
+
+.c-caption{
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  padding: 1.25rem;
+  color: #fff;
+}
+
+.c-caption h3{
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: -2px;
+  text-shadow: 0 1px 5px rgba(0,0,0,.3);
+  font-size: 58px;
+  line-height: 52px;
 }
 
 
@@ -105,7 +139,6 @@
 
 .reservation{
   width: 100%;
-  height: 500px;
   background-color: #fff;
   padding: 40px;
   border-radius: 5px;
@@ -118,6 +151,35 @@
   text-align: left;
   font-weight: 500;
   color: var(--accent);
+}
+
+/deep/ .mdc-text-field--filled {
+  background-color: #fff !important;
+  border-radius: 5px !important;
+  border: 2px solid #e5e5e5;
+  box-shadow: none;
+  margin-bottom: 10px;
+}
+
+/deep/ .mdc-line-ripple::before, .mdc-line-ripple::after{
+  border: none !important;
+}
+
+/deep/ .mat-mdc-form-field-icon-suffix{
+  align-self: inherit !important;
+}
+
+/deep/ .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label{
+  top: 50% !important;
+}
+
+/deep/ .mat-mdc-form-field-bottom-align::before{
+  display: none !important;
+}
+
+
+/deep/ .mat-mdc-form-field{
+  width: 100% !important;
 }
 
 .btn-reservation{
@@ -152,5 +214,194 @@
   font-weight: 500;
   padding: 0;
   line-height: 1;
-  margin: 0 0 20px
+  margin: 40px 0 10px;
+}
+
+.info-section-title{
+  color: #9eabb5;
+  font-size: 17px;
+  font-weight: 400;
+  margin-bottom: 0;
+  display: inline-block;
+}
+
+.info-section-title i{
+  color: var(--primary);
+  font-size: 15px;
+}
+
+.item-value {
+  color: var(--accent);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.terrain-details-title{
+  color: var(--accent);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.terrain-map-location{
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 3px 0 25px 0 rgba(171,179.00000000000003,194,.5);
+}
+
+
+.terrain-widget-container {
+  padding: 10px 45px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e5e5e5;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.terrain-info-item {
+  font-size: 14px;
+  line-height: 1.6em;
+  padding: 1em 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex
+}
+
+.terrain-info-item:not(:last-child) {
+  border-bottom: 1px solid;
+  border-color: var(--border);
+}
+
+.terrain-info-item .item-label {
+  min-width: 200px;
+  font-weight: 500;
+  color: var(--accent)
+}
+
+blockquote:before {
+  content: "";
+  background-color: var(--primary);
+  width: 3px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* --------------------- TimePicker ----------------- */
+
+.timeslots{
+  display: flex;
+  justify-content: space-between;
+}
+
+.dp-timeslot {
+  height: 24px;
+  width: 20px;
+  flex-grow: 1;
+  margin: 0;
+  box-shadow: inset 1px 0 0 0#fff,inset -1px 0 0 0#fff;
+  border-radius: 0;
+  position: relative;
+  cursor: pointer;
+  background-color: #8fe286;
+}
+
+.dp-timeslot .dp-label {
+  display: none;
+  text-align: center;
+  padding: 7px 8px;
+  line-height: 1;
+  background-color: #04bb03;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  position: absolute;
+  left: 50%;
+  top: -8px;
+  transform: translate(-50%,-100%);
+  white-space: nowrap;
+  transition: all .2s ease;
+  z-index: 10;
+  border-radius: 6px;
+}
+
+.dp-timeslot .dp-label span{
+  display: inline-block;
+}
+
+.dp-timeslot.with-tick:after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  left: 50%;
+  height: 3px;
+  bottom: -7px;
+  background-color: rgba(0,0,0,.4);
+}
+
+.dp-timeslot .dp-tick {
+  position: absolute;
+  top: 34px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 7px;
+  color: rgba(0,0,0,.4);
+  line-height: 1.4;
+  font-weight: 500;
+}
+.dp-timeslot .dp-success-label, .dp-timeslot .dp-tick {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dp-timeslot.is-booked {
+  background-color: #e6e9ef;
+  margin: 0;
+  cursor: not-allowed;
+}
+
+.dp-timeslot:hover {
+  background-color: #04bb03;
+}
+
+.dp-timeslot:hover .dp-label{
+  display: block;
+}
+
+
+#total_group {
+  margin-bottom: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap
+}
+
+#total_group .booking_form_input_label {
+  color: var(--accent)
+}
+
+#booking_form_total {
+  text-align: right
+}
+
+#booking_form_total .currency_amount {
+  font-size: 24px
+}
+
+#booking_form_total .currency_amount {
+  font-size: 18px;
+  line-height: 20px;
+  color: var(--primary);
+  font-weight: 700;
 }
