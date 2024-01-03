@@ -19,6 +19,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {NavBarComponent} from "../../shared/nav-bar/nav-bar.component";
 import {InfoTabComponent} from "../../shared/info-tab/info-tab.component";
+import {FooterComponent} from "../../shared/footer/footer.component";
 
 @Component({
   selector: 'app-terrain',
@@ -46,7 +47,8 @@ import {InfoTabComponent} from "../../shared/info-tab/info-tab.component";
     ReactiveFormsModule,
     NgIf,
     NavBarComponent,
-    InfoTabComponent
+    InfoTabComponent,
+    FooterComponent
   ],
   templateUrl: './terrain-details.component.html',
   styleUrl: './terrain-details.component.css'
