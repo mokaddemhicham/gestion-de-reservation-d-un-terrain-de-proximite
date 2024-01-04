@@ -6,6 +6,7 @@ import {InfoTabComponent} from "../../shared/info-tab/info-tab.component";
 import {MySwiperComponent} from "../../shared/my-swiper/my-swiper.component";
 import {NavBarComponent} from "../../shared/nav-bar/nav-bar.component";
 import {FooterComponent} from "../../shared/footer/footer.component";
+import {HeaderSectionComponent} from "../../shared/header-section/header-section.component";
 
 @Component({
   selector: 'app-list-terrains',
@@ -17,7 +18,8 @@ import {FooterComponent} from "../../shared/footer/footer.component";
     InfoTabComponent,
     MySwiperComponent,
     NavBarComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderSectionComponent
   ],
   templateUrl: './list-terrains.component.html',
   styleUrl: './list-terrains.component.css'
