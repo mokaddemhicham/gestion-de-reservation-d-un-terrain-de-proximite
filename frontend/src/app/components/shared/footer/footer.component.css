@@ -6,3 +6,18 @@
   text-decoration: none;
   font-size: 14px;
 }
+.btn-floating:hover{
+  background-color: var(--primary);
+}
+input::placeholder {
+  color: #999; /* Replace with your desired color value */
+}
+input:focus{
+  box-shadow: 0 0 5px 0px var(--primary);
+}
+ul li a{
+  text-decoration: none !important;
+}
+.mySpan{
+  font-size: 14px;
+}
