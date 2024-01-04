@@ -3,9 +3,8 @@ import {CardTerrainComponent} from "../../shared/card-terrain/card-terrain.compo
 import {NgForOf} from "@angular/common";
 import {TerrainSearchComponent} from "../../shared/terrain-search/terrain-search.component";
 import {InfoTabComponent} from "../../shared/info-tab/info-tab.component";
-import {NavigationComponent} from "../../shared/navigation/navigation.component";
 import {MySwiperComponent} from "../../shared/my-swiper/my-swiper.component";
-import {HichamNavComponent} from "../../shared/hicham-nav/hicham-nav.component";
+import {NavBarComponent} from "../../shared/nav-bar/nav-bar.component";
 import {FooterComponent} from "../../shared/footer/footer.component";
 
 @Component({
@@ -16,9 +15,8 @@ import {FooterComponent} from "../../shared/footer/footer.component";
     NgForOf,
     TerrainSearchComponent,
     InfoTabComponent,
-    NavigationComponent,
     MySwiperComponent,
-    HichamNavComponent,
+    NavBarComponent,
     FooterComponent
   ],
   templateUrl: './list-terrains.component.html',

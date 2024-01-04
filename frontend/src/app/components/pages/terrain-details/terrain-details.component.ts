@@ -17,6 +17,9 @@ import {DateFilterFn, MatDatepickerInputEvent, MatDatepickerModule} from "@angul
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatNativeDateModule} from "@angular/material/core";
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {NavBarComponent} from "../../shared/nav-bar/nav-bar.component";
+import {InfoTabComponent} from "../../shared/info-tab/info-tab.component";
+import {FooterComponent} from "../../shared/footer/footer.component";
 
 @Component({
   selector: 'app-terrain',
@@ -42,7 +45,10 @@ import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from "@angular
     MatNativeDateModule,
     NgOptimizedImage,
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    NavBarComponent,
+    InfoTabComponent,
+    FooterComponent
   ],
   templateUrl: './terrain-details.component.html',
   styleUrl: './terrain-details.component.css'

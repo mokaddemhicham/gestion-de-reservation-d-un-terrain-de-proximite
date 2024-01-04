@@ -1,3 +1,5 @@
+<app-info-tab></app-info-tab>
+<app-nav-bar></app-nav-bar>
 <c-carousel>
   <c-carousel-inner>
     <c-carousel-item *ngFor="let slide of slides">
@@ -20,8 +22,8 @@
 
 <div class="container">
   <div class="row my-5">
-    <div class="col-md-7">
-      <c-nav variant="tabs">
+    <div class="col-lg-7 col-md-12">
+      <c-nav variant="tabs" class="grid row-gap-3">
         <a class="tab-title" [active]="true" [cTabContent]="tabContent" [routerLink]="" [tabPaneIdx]="0" cNavLink>Details</a>
         <a class="tab-title" [cTabContent]="tabContent" [routerLink]="" [tabPaneIdx]="1" cNavLink>Disponibilité</a>
         <a class="tab-title" [cTabContent]="tabContent" [routerLink]="" [tabPaneIdx]="2" cNavLink>Services</a>
@@ -35,21 +37,21 @@
           <h3 class="terrain-details-title">Details</h3>
 
           <div class="terrain-widget-container">
-            <div class="terrain-info-item">
-              <div class="item-label">Type</div>
-              <div class="item-content">{{ terrain.type }}</div>
+            <div class="terrain-info-item row">
+              <div class="item-label col-6 col-md-5">Type</div>
+              <div class="item-content col-6 col-md-7">{{ terrain.type }}</div>
             </div>
-            <div class="terrain-info-item">
-              <div class="item-label">Taille</div>
-              <div class="item-content">{{ terrain.taille }}</div>
+            <div class="terrain-info-item row">
+              <div class="item-label col-6 col-md-5">Taille</div>
+              <div class="item-content col-6 col-md-7">{{ terrain.taille }}</div>
             </div>
-            <div class="terrain-info-item">
-              <div class="item-label">Prix</div>
-              <div class="item-content">{{ terrain.price }} DHS/h</div>
+            <div class="terrain-info-item row">
+              <div class="item-label col-6 col-md-5">Prix</div>
+              <div class="item-content col-6 col-md-7">{{ terrain.price }} DHS/h</div>
             </div>
-            <div class="terrain-info-item">
-              <div class="item-label">Adresse</div>
-              <div class="item-content">{{ terrain.adresse }}</div>
+            <div class="terrain-info-item row">
+              <div class="item-label col-6 col-md-5">Adresse</div>
+              <div class="item-content col-6 col-md-7">{{ terrain.adresse }}</div>
             </div>
           </div>
 
@@ -128,7 +130,7 @@
         </c-tab-pane>
       </c-tab-content>
     </div>
-    <div class="col-md-5">
+    <div class="col-lg-5 col-md-12">
       <div class="reservation">
         <h3 class="reservation-title mb-4">Reserver Maintenant</h3>
 
@@ -180,4 +182,4 @@
   </div>
 </div>
 
-
+<app-footer></app-footer>

@@ -11,4 +11,6 @@ import java.util.UUID;
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, UUID> {
     boolean existsByTerrainAndDateAndHeure(Terrain terrain, Date date, Integer heure);
+
+    Iterable<Reservation> findAllByDateAndTerrain(Date date, Terrain terrain);
 }

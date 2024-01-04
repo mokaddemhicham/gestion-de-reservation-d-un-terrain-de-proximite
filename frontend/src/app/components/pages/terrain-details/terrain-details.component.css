@@ -374,6 +374,14 @@ blockquote:before {
   display: block;
 }
 
+.timeslots input[type=radio]:checked + label .dp-label{
+  display: block;
+}
+
+.timeslots input[type=radio]:checked + label{
+  background-color: #04bb03;
+}
+
 
 #total_group {
   margin-bottom: 5px;
@@ -404,4 +412,76 @@ blockquote:before {
   line-height: 20px;
   color: var(--primary);
   font-weight: 700;
+}
+
+/* add media query for .tab-title for max-width 1200px should have width:100%*/
+@media (max-width: 1200px) {
+  .tab-title {
+    width: 48%;
+  }
+
+  .c-caption{
+    padding: 0;
+  }
+
+  .c-caption h3{
+    font-size: 40px;
+  }
+
+  .c-caption p {
+    display: none;
+  }
+}
+
+/* add media query for .tab-title for max-width 524px should have width:100%*/
+@media (max-width: 524px) {
+  .tab-title {
+    width: 100%;
+  }
+
+  .c-caption h3{
+    font-size: 30px;
+  }
+}
+
+/* add media query to .info-section-title, .item-value for max-width 480px */
+@media (max-width: 480px) {
+  .info-section-title {
+  font-size: 15px !important;
+  }
+
+  .item-value {
+    font-size: 14px !important;
+  }
+
+  blockquote{
+  padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .terrain-name{
+    font-size: 21px !important;
+  }
+
+  .terrain-widget-container {
+    padding: 10px 15px !important;
+  }
+}
+
+/* add media query (max-width: 420px) for .reservation to padding */
+@media (max-width: 420px) {
+  .reservation {
+    padding: 20px 15px;
+  }
+
+  .terrain-map-location{
+    margin-left: 0 !important;
+  }
+
+}
+
+@media (max-width: 524px) {
+  .terrain-info-item .item-label{
+    min-width: 0 !important;
+  }
 }
