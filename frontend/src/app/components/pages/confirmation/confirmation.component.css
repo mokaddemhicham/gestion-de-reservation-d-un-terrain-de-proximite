@@ -1,0 +1,269 @@
+.babe_message_order_status_payment_deferred, .babe_message_order_status_payment_processing, .babe_message_order_status_payment_received {
+  border: 0;
+  color: #7cc566;
+  background-color: #f8f8f8;
+  padding: 2em 1em;
+  margin-bottom: 40px;
+}
+.babe_message_order {
+  display: block;
+  font-size: 18px;
+  text-align: center;
+}
+
+.confirmation-information {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  max-width: 850px;
+  margin: 0 auto 50px;
+}
+
+.confirmation-information>div {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  width: 25%;
+  text-align: center;
+  border-right: 1px solid;
+  border-right-color: var(--border);
+}
+
+.confirmation-information div .title {
+  font-size: 14px;
+  margin-bottom: 3px;
+  color: var(--text);
+}
+
+.confirmation-information div .content {
+  font-size: 14px;
+  color: var(--accent);
+}
+
+.order-details-table {
+  max-width: 630px;
+  margin: 0 auto;
+}
+
+.order-details-table .order-heading {
+  font-size: 24px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 38px;
+}
+
+.order-details-table .order-body {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-top: 35px;
+  padding-bottom: 25px;
+  border-top: 1px solid;
+  border-top-color: var(--border);
+}
+
+.order-details-table .order-body .order-content {
+  width: 85%;
+  padding-right: 15px;
+}
+
+
+.order-details-table .order-body .order-price {
+  width: 15%;
+  text-align: left;
+  padding-left: 15px;
+}
+
+.order-details-table .order-body .order-content>div:first-child {
+  margin-bottom: 7px;
+}
+
+.order-details-table .order-body .title a {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.order-details-table .order-body .order-content>div {
+  margin-bottom: 5px;
+}
+
+.order-details-table .order-body .order-content>div .label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.order-details-table .order-body .date-time span.date {
+  margin-right: 5px;
+}
+
+.order-details-table .order-body .order-content>div .value {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.order-details-table .order-body .order-content>div:last-child {
+  margin-bottom: 0;
+}
+
+.order-details-table .order-body .tickets .label {
+  margin-bottom: 8px;
+  display: block;
+}
+
+.order-details-table .order-body .order-content>div .value .currency_amount {
+  color: var(--accent);
+}
+.currency_amount {
+  font-weight: 700;
+}
+
+.order-details-table .order-body .order-price .currency_amount {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 14px;
+  color: var(--accent);
+}
+
+.order-details-table .order-total-subtotal {
+  background-color: #f6f6f6;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-top: 1px solid;
+  border-top-color: var(--border);
+}
+
+.order-details-table .order-total-subtotal .order_items_total {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  padding-bottom: 6px;
+}
+
+.order-details-table .order-total-subtotal .order_items_total .label {
+  width: 85%;
+  text-align: right;
+  padding-right: 15px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.order-details-table .order-total-subtotal .order_items_total .amount {
+  width: 15%;
+  text-align: left;
+  padding-left: 15px;
+}
+
+.order-details-table .order-total-subtotal .order_items_total .amount .currency_amount {
+  font-size: 14px;
+  color: var(--accent);
+}
+
+.order-details-table .order-total-subtotal .order_items_total .amount-total .currency_amount {
+  font-size: 18px;
+  color: var(--primary);
+}
+
+
+@media (max-width: 767px){
+
+  .confirmation-information>div {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid;
+    border-bottom-color: var(--border);
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+  }
+
+  .order-details-table .order-body .order-content {
+    width: 75%;
+  }
+
+  .order-details-table .order-body .order-price {
+    width: 25%;
+  }
+
+  .order-details-table .order-total-subtotal .order_items_total .label {
+    width: 75%;
+  }
+
+  .order-details-table .order-total-subtotal .order_items_total .amount {
+    width: 25%;
+  }
+}
+
+@media (max-width: 350px) {
+  .order-details-table .order-total-subtotal .order_items_total .label {
+    width: 50%;
+  }
+
+  .order-details-table .order-total-subtotal .order_items_total .amount {
+    width: 50%;
+  }
+}
+
+.download-ticket{
+  border-top: 1px solid #e1e1e1;
+  margin: 20px 0;
+}
+
+input[type=text]:focus, input[type=number]:focus, input[type=email]:focus, input[type=tel]:focus, input[type=url]:focus, input[type=password]:focus, input[type=search]:focus, textarea:focus, .input-text:focus {
+  border-color: var(--primary);
+}
+
+button, input[type=button], input[type=reset], input[type=submit], .button {
+  border: none;
+  font-size: 14px;
+  border-radius: 3px;
+  line-height: 1.49;
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  padding: 1.094rem 2rem;
+  text-decoration: none;
+  text-shadow: none;
+  display: inline-block;
+  -webkit-appearance: none;
+  font-weight: 700;
+  -webkit-transition: all .25s ease-in-out 0s;
+  transition: all .25s ease-in-out 0s;
+}
+
+.submit_group button {
+  width: 100%;
+  font-size: 1rem;
+  letter-spacing: normal;
+  line-height: 1.5;
+}
+
+button:hover, input[type=button]:hover, input[type=reset]:hover, input[type=submit]:hover, .button:hover {
+  color: #fff;
+}
+button:hover, input[type=button]:hover, input[type=reset]:hover, input[type=submit]:hover, .button:hover {
+  background-color: var(--primary_hover);
+  border-color: var(--primary_hover);
+}

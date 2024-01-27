@@ -191,12 +191,12 @@ export class TerrainDetailsComponent implements OnInit{
 // Generate fake data for Terrain
     this.terrain = {
       uuid: '54a9f5d6-54f1-45c7-9542-4b5c54a9f4a5',
-      name: 'Havre de Paix',
+      nom: 'Havre de Paix',
       description: 'Terrain constructible de 5000 m², situé dans un quartier calme et verdoyant de Salé. Vue imprenable sur la mer et les montagnes. Idéal pour une maison familiale ou une retraite paisible.',
       image: 'assets/images/stadium_1.jpg',
-      price: 50,
+      prix: 50,
       taille: '10x10',
-      adresse: '123 Chemin des Lilas, Salé',
+      addresse: '123 Chemin des Lilas, Salé',
       localisation: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3397.238595280296!2d-8.052004925638188!3d31.627317041852702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafe9f0ca6b3a9f%3A0x8eb4b9f17c64224a!2z2YXZhNin2LnYqCDYp9mE2YLYsdioINij2LLZhNmK!5e0!3m2!1sfr!2sma!4v1704115134685!5m2!1sfr!2sma',
       type: 'Terrain constructible',
       proprietaire: fakeProprietaire,

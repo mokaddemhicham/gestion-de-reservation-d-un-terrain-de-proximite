@@ -31,7 +31,7 @@
       </c-nav>
       <c-tab-content #tabContent="cTabContent">
         <c-tab-pane class="p-3">
-          <h2 class="terrain-name">{{ terrain.name }}</h2>
+          <h2 class="terrain-name">{{ terrain.nom }}</h2>
           <p class="terrain-description">{{ terrain.description }}</p>
           <hr>
           <h3 class="terrain-details-title">Details</h3>
@@ -47,11 +47,11 @@
             </div>
             <div class="terrain-info-item row">
               <div class="item-label col-6 col-md-5">Prix</div>
-              <div class="item-content col-6 col-md-7">{{ terrain.price }} DHS/h</div>
+              <div class="item-content col-6 col-md-7">{{ terrain.prix }} DHS/h</div>
             </div>
             <div class="terrain-info-item row">
               <div class="item-label col-6 col-md-5">Adresse</div>
-              <div class="item-content col-6 col-md-7">{{ terrain.adresse }}</div>
+              <div class="item-content col-6 col-md-7">{{ terrain.addresse }}</div>
             </div>
           </div>
 
@@ -171,7 +171,7 @@
             <hr class="d-block mt-5">
             <div id="total_group">
               <label class="booking_form_input_label">Total:</label>
-              <div id="booking_form_total"><span class="currency_amount" ><span class="currency_symbol">MAD</span>{{ terrain.price }}</span></div>
+              <div id="booking_form_total"><span class="currency_amount" ><span class="currency_symbol">MAD</span>{{ terrain.prix }}</span></div>
             </div>
           </div>
           <button type="submit" class="btn-reservation mt-3">Reserver</button>

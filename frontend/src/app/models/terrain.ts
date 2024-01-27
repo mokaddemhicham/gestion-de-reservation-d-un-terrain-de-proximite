@@ -5,12 +5,12 @@ import {Reservation} from "./reservation";
 
 export interface Terrain {
   uuid: string;
-  name: string;
+  nom: string;
   description: string;
   image: string;
-  price: number;
+  prix: number;
   taille: string;
-  adresse: string;
+  addresse: string;
   localisation: string;
   type: string;
   proprietaire: ProprietaireTerrain;

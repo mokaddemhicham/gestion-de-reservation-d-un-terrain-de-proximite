@@ -1,5 +1,7 @@
 package com.gestion.reservation_terrain.repository;
 
+import com.gestion.reservation_terrain.model.Disponibilite;
+import com.gestion.reservation_terrain.model.Service;
 import com.gestion.reservation_terrain.model.Terrain;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -21,7 +23,10 @@ public interface TerrainRepository extends JpaRepository<Terrain, UUID> {
     Integer isTerrainAvailable(@Param("dayName") String dayName,
                                @Param("heure") int heure,
                                @Param("terrainUuid") UUID terrainUuid);
+    @Query("select t.services from Terrain t where t.uuid = :uuid")
+    public Iterable<Service> findAllServicesByTerrainUuid(@Param("uuid") UUID uuid);
 
-
+    @Query("select t.disponibilites from Terrain t where t.uuid = :uuid")
+    public Iterable<Disponibilite> findAllDisponibilitesByTerrainUuid(@Param("uuid") UUID uuid);
 
 }

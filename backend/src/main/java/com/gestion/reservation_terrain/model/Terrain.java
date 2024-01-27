@@ -3,6 +3,7 @@ package com.gestion.reservation_terrain.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 import org.hibernate.annotations.DynamicUpdate;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "terrain")
 @DynamicUpdate
+@ToString
 public class Terrain {
 
     @Id
@@ -48,7 +50,6 @@ public class Terrain {
             joinColumns = @JoinColumn(name = "uuid_terrain"),
             inverseJoinColumns = @JoinColumn(name = "uuid_disponibilite")
     )
-    @JsonIgnore
     private List<Disponibilite> disponibilites = new ArrayList<>();
 
     @ManyToMany(
@@ -63,11 +64,21 @@ public class Terrain {
             joinColumns = @JoinColumn(name = "uuid_terrain"),
             inverseJoinColumns = @JoinColumn(name = "uuid_service")
     )
-    @JsonIgnore
     private List<Service> services = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "proprietaire")
-    @JsonIgnore
     private ProprietaireTerrain proprietaire;
+
+    // Méthode pour ajouter un service au terrain
+    public void addService(Service service) {
+        services.add(service);
+        service.getTerrains().add(this);
+    }
+
+    // Méthode pour supprimer un service du terrain
+    public void removeService(Service service) {
+        services.remove(service);
+        service.getTerrains().remove(this);
+    }
 }

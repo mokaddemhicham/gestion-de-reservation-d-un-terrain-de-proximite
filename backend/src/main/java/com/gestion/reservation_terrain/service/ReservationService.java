@@ -91,13 +91,25 @@ public class ReservationService {
         return heuresAvailables;
     }
 
-    public Boolean isDayAvailable(UUID terrainUuid, Date date){
-        Optional<Terrain> optionalTerrain = terrainService.getTerrain(terrainUuid);
-        if(optionalTerrain.isPresent()){
-            Terrain terrain = optionalTerrain.get();
-            Iterable<Reservation> reservations = getReservationsByDateAndTerrain(date, terrain);
-
+    public Integer getNumberOfHoursDisponibleByDay(Terrain terrain, Date date){
+        String dayName = getDayName(date);
+        Optional<Disponibilite> optionalDisponibilite =  terrainService.getDisponibiliteByTerrainAndJour(terrain, dayName);
+        if (optionalDisponibilite.isPresent()) {
+            Disponibilite disponibilite = optionalDisponibilite.get();
+            return (disponibilite.getHeureFin() - disponibilite.getHeureDebut()) + 1;
         }
+        return null;
+    }
+
+    public Iterable<java.util.Date> getReservedDatesByTerrain(Terrain terrain){
+        Date today = new Date(new java.util.Date().getTime());
+        List<Reservation> reservations = reservationRepository.findAllByTerrainAndDateGreaterThanEqual(terrain, today);
+        List<java.util.Date> dates = new ArrayList<>();
+        Integer numberOfHoursReserved = reservations.size();
+        for (Reservation reservation: reservations){
+//            if (numberOfHoursReserved)
+        }
+        return dates;
     }
 
 }

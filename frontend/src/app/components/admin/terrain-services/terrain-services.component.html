@@ -1,0 +1,83 @@
+<div class="card" xmlns="http://www.w3.org/1999/html">
+  <div class="card-header d-flex justify-content-between">
+    <span>Liste des Services</span>
+    <button (click)="toggleLiveDemo()" class="btn btn-success">Ajouter un Service</button>
+
+    <c-modal id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+      <c-modal-header>
+        <h5 cModalTitle>Ajouter un service</h5>
+        <button (click)="toggleLiveDemo()" cButtonClose></button>
+      </c-modal-header>
+      <c-modal-body>
+        <form [formGroup]="addServiceForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-12">
+              <div class="mb-3">
+                <label class="form-label" for="icon">Icon</label>
+                <input class="form-control" id="icon" type="text" formControlName="icon">
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="mb-3">
+                <label class="form-label" for="libelle">Libelle</label>
+                <input class="form-control" id="libelle" type="text" formControlName="libelle">
+              </div>
+            </div>
+          </div>
+          <c-modal-footer>
+            <button (click)="toggleLiveDemo()" cButton color="secondary">
+              Fermer
+            </button>
+            <button type="submit" class="btn btn-primary" [disabled]="addServiceForm.invalid">Ajouter</button>
+          </c-modal-footer>
+        </form>
+      </c-modal-body>
+    </c-modal>
+
+
+  </div>
+  <div class="card-body p-0">
+    <div>
+      <table mat-table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="uuid">
+          <th mat-header-cell *matHeaderCellDef> UUID. </th>
+          <td mat-cell *matCellDef="let element" class="fw-bold"> {{ element.uuid | slice:0:8 }}{{ element.uuid.length > 8 ? '...' : '' }}
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="icon">
+          <th mat-header-cell *matHeaderCellDef> Icon </th>
+          <td mat-cell *matCellDef="let element">
+            <img ngSrc="assets/uploads/images/{{element.image}}" alt="{{element.nom}}" width="60" height="60">
+          </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="libelle">
+          <th mat-header-cell *matHeaderCellDef> Libelle </th>
+          <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let element">
+            <a [routerLink]="['edit', element.uuid]" class="btn btn-outline-success me-2" ><i class="fa-regular fa-pen-to-square"></i></a>
+            <button type="button" (click)="delete(element.uuid)" class="btn btn-outline-danger" ><i class="fa-regular fa-trash-can"></i></button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                     showFirstLastButtons
+                     aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

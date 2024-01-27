@@ -1,0 +1,74 @@
+<div class="card">
+  <div class="card-header">
+    <span>Modifier un Terrain</span>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="editTerrainForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label class="form-label" for="name">Nom</label>
+            <input class="form-control" id="name" type="text" formControlName="nom">
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label class="form-label" for="type">Type de gazon</label>
+            <input class="form-control" id="type" type="text" formControlName="type">
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label class="form-label" for="taille">Taille</label>
+            <input class="form-control" id="taille" type="text" formControlName="taille">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label class="form-label" for="price">Prix</label>
+            <input class="form-control" id="price" type="number" formControlName="prix">
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          <div class="mb-3">
+            <label class="form-label" for="adresse">Adresse</label>
+            <input class="form-control" id="adresse" type="text" formControlName="addresse">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label class="form-label" for="localisation">Localisation</label>
+            <input class="form-control" id="localisation" type="text" formControlName="localisation">
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="mb-3">
+            <label class="form-label" for="image">Image</label>
+            <input class="form-control" id="image" type="file" formControlName="image" (change)="onFileChange($event)">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <label class="form-label" for="description">Description</label>
+            <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
+          </div>
+        </div>
+      </div>
+      <input type="submit" [disabled]="editTerrainForm.invalid" value="Modifier" class="btn btn-primary w-25 float-end clearfix">
+    </form>
+  </div>
+</div>
