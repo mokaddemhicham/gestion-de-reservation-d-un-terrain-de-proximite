@@ -9,4 +9,5 @@ import java.util.UUID;
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
     public Iterable<User> findByNomContaining(String nom);
+    public User findByEmailAndPassword(String email, String password);
 }

@@ -37,4 +37,8 @@ public class UserService {
     public Iterable<User> getUsersByName(String nom){
         return userRepository.findByNomContaining(nom);
     }
+
+    public User getUserByEmailAndPassword(String email, String password) {
+        return userRepository.findByEmailAndPassword(email, password);
+    }
 }

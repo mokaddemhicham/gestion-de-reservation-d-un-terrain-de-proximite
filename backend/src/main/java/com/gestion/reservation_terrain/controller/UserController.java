@@ -1,5 +1,6 @@
 package com.gestion.reservation_terrain.controller;
 
+import com.gestion.reservation_terrain.dto.SignInRequest;
 import com.gestion.reservation_terrain.model.User;
 import com.gestion.reservation_terrain.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -7,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 import java.util.UUID;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @Tag(name = "User Controller", description = "Gestion des utilisateurs")
 @RequestMapping(path = "/users")
 @RestController
@@ -38,4 +39,8 @@ public class UserController {
         return userService.getUsersByName(nom);
     }
 
+    @PostMapping(path = "/signin")
+    public User getUserByEmailAndPassword(@RequestBody SignInRequest request){
+        return userService.getUserByEmailAndPassword(request.getEmail(), request.getPassword());
+    }
 }
