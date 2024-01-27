@@ -98,6 +98,7 @@ public class ReservationService {
             Iterable<Reservation> reservations = getReservationsByDateAndTerrain(date, terrain);
 
         }
+        return true;
     }
 
 }
