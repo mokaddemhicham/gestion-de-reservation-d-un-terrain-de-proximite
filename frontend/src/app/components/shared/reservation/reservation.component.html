@@ -1,0 +1,24 @@
+<div class="container text-center" >
+  <table class="table table-bordered table-striped rounded">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Heure</th>
+      <th>Date</th>
+      <!-- Add other columns as needed -->
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let reservation of reservations">
+      <td>{{ reservation.uuid }}</td>
+      <td>{{ reservation.heure }}</td>
+      <td>{{ reservation.date | date:'short' }}</td>
+      <!-- Add other columns as needed -->
+      <td><button class="nav-link" (click)="generatePdf(reservation)">Generate PDF</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+

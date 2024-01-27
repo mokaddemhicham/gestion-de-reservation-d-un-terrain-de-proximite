@@ -29,17 +29,17 @@
   </div>
 
 
-    <div class="row">
-      <div class="col-md-4 mb-5" *ngFor="let terrain of terrains">
-        <app-card-terrain [terrain]="terrain"></app-card-terrain>
-      </div>
+  <div class="row">
+    <div class="col-md-4 mb-5" *ngFor="let terrain of terrains">
+      <app-card-terrain [terrain]="terrain"></app-card-terrain>
     </div>
+  </div>
 
-    <div class="babe_pager">
-      <span aria-current="page" class="page-numbers current">1</span>
-      <a class="page-numbers" href="page/2/index.htm?paged=2">2</a>
-      <a class="page-numbers" href="page/3/index.htm?paged=3">3</a>
-      <a class="next page-numbers" href="page/2/index.htm?paged=2">Next »</a>
-    </div>
+  <div class="babe_pager">
+    <span aria-current="page" class="page-numbers current">1</span>
+    <a class="page-numbers" href="page/2/index.htm?paged=2">2</a>
+    <a class="page-numbers" href="page/3/index.htm?paged=3">3</a>
+    <a class="next page-numbers" href="page/2/index.htm?paged=2">Next »</a>
+  </div>
 </main>
 <app-footer></app-footer>

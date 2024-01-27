@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center align-items-center" id="mine" style="height: 100vh; background-image: url('../../../../assets/images/gazon.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;">
+  <div class="signup-container">
+    <form class="signup-form" (ngSubmit)="onSubmit()" [ngClass]="{'wider-form': userType === 'owner'}">
+      <h2 class="text-center">Sign Up</h2>
+
+      <!-- First Name and Last Name -->
+      <div class="row mb-2">
+        <div class="col">
+          <label for="firstName" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="firstName" required [(ngModel)]="user.prenom" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="col">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="lastName" required [(ngModel)]="user.nom" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+
+      <!-- Phone Number and Email -->
+      <div class="row mb-2">
+        <div class="col">
+          <label for="phoneNumber" class="form-label">Phone Number</label>
+          <input type="tel" class="form-control" id="phoneNumber" required [(ngModel)]="user.telephone" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="col">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" required [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+
+      <!-- Password and Confirm Password -->
+      <div class="row mb-3">
+        <div class="col">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" required [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="col">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="confirmPassword" required>
+        </div>
+      </div>
+
+      <!-- User Type (Radio Button) -->
+      <div class="mb-1">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input custom-radio" type="radio" name="userType" id="regularClient" value="regular" [(ngModel)]="userType" checked>
+          <label class="form-check-label" for="regularClient">Regular Client</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input custom-radio" type="radio" name="userType" id="owner" value="owner" [(ngModel)]="userType">
+          <label class="form-check-label" for="owner">Owner</label>
+        </div>
+      </div>
+      @if (userType === 'owner'){
+        <!-- Additional Inputs for Owner -->
+        <div class="additional-inputs row" >
+          <!-- Cin input -->
+          <div class="col mb-3">
+            <label for="cin" class="form-label">Cin</label>
+            <input type="text" class="form-control" id="cin" required [(ngModel)]="user.cin"  [ngModelOptions]="{standalone: true}">
+          </div>
+
+          <!-- Address input -->
+          <div class="col mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" class="form-control" id="address" required [(ngModel)]="user.adresse" [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+      }
+      <!-- Sign Up Button -->
+      <button type="submit" class="btn btn-primary btn-block">Sign Up {{ userType }}</button>
+    </form>
+  </div>
+</div>

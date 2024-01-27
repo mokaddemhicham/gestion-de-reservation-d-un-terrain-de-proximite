@@ -1,0 +1,39 @@
+<!--<div *ngFor="let client of clients">
+  <div>
+    <strong>{{ client.uuid }} {{ client.prenom }}</strong>
+  </div>
+  <div>Email: {{ client.email }}</div>
+  &lt;!&ndash; Ajoutez d'autres propriétés du client que vous souhaitez afficher &ndash;&gt;
+  <div>
+    <a [routerLink]="['/edit-client', client.uuid]">Modifier</a>
+    <a (click)="deleteClient(client.uuid)">Supprimer</a>
+  </div>
+  <hr>
+</div>-->
+<!-- clients.component.html -->
+
+<div class="container mt-5">
+  <h2>Clients List</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>UUID</th>
+      <th>Prénom</th>
+      <th>Email</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let client of clients">
+      <td>{{ client.uuid }}</td>
+      <td>{{ client.prenom }}</td>
+      <td>{{ client.email }}</td>
+      <!-- Add other client properties as needed -->
+      <td>
+        <a [routerLink]="['/edit-client', client.uuid]" class="btn btn-primary btn-sm">Modifier</a>
+        <button (click)="deleteClient(client.uuid)" class="btn btn-danger btn-sm ms-1">Supprimer</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

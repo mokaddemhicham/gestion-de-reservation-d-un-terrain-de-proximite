@@ -98,6 +98,7 @@ export class TerrainDetailsComponent implements OnInit{
       telephone: '+212 697 332 933',
       adresse: '123 Main St',
       cin: 'AB123456',
+      role: 'proprietaire',
       terrains: [], // Leave it empty for now
     };
 

@@ -11,11 +11,22 @@ import {TerrainServicesComponent} from "./components/admin/terrain-services/terr
 import {
   TerrainDisponibilitesComponent
 } from "./components/admin/terrain-disponibilites/terrain-disponibilites.component";
-
+import {SignUpComponent} from "./components/shared/sign-up/sign-up.component";
+import {ClientsComponent} from "./components/admin/clients/clients.component";
+import {EditClientComponent} from "./components/shared/edit-client/edit-client.component";
+import {SigninComponent} from "./components/shared/signin/signin.component";
+import {AdminAuthGuard} from "./guards/auth.guard";
+import {ReservationComponent} from "./components/shared/reservation/reservation.component";
 export const routes: Routes = [
   {path: '', redirectTo: 'terrains', pathMatch: 'full'},
-  {'path' : 'terrains', 'component': ListTerrainsComponent, pathMatch: 'full'},
-  {'path' : 'terrain/:uuid', 'component': TerrainDetailsComponent, pathMatch: 'full'},
+  {path : 'terrains', 'component': ListTerrainsComponent, pathMatch: 'full'},
+  {path : 'terrains/:uuid', 'component': TerrainDetailsComponent, pathMatch: 'full'},
+  {path : 'clients', 'component': ClientsComponent, pathMatch: 'full', canActivate: [AdminAuthGuard]},
+  { path: 'edit-client/:id', component: EditClientComponent },
+  {path : 'signUP', 'component': SignUpComponent, pathMatch: 'full'},
+  {path : 'login', 'component': SigninComponent, pathMatch: 'full'},
+  {path : 'terrain/:uuid', 'component': TerrainDetailsComponent, pathMatch: 'full'},
+  { path: 'reservations', component: ReservationComponent },
   {path : 'reservation/checkout/:orderUuid', component: CheckoutComponent, pathMatch: 'full'},
   {path: 'reservation/confirmation/:orderUuid', component: ConfirmationComponent, pathMatch: 'full'},
   {path: 'admin', component: SideBarComponent, children: [

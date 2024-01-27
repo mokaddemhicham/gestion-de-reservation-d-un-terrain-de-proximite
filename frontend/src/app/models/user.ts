@@ -6,4 +6,6 @@ export interface User{
   password: string;
   telephone: string;
   adresse: string;
+  cin: string;
+  role: string;
 }
