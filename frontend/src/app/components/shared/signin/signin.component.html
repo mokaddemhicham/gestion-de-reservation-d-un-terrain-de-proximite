@@ -1,0 +1,64 @@
+<!-- signin.component.html -->
+
+<!--<div class="container">
+  <h2 class="mt-5 mb-3">Sign In</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" required [(ngModel)]="credentials.email" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" required [(ngModel)]="credentials.password" [ngModelOptions]="{standalone: true}">
+    </div>
+    <button type="submit" class="btn btn-primary">Sign In</button>
+  </form>
+</div>-->
+<!-- Main Content -->
+
+<div class="container-fluid" >
+  <div class="row main-content  text-center">
+    <div class="col-6 text-center company__info" style="background: radial-gradient(#fff,#2fce19);">
+<!--      <span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>-->
+<!--      <h4 class="company_title">Your Company Logo</h4>-->
+      <img src="assets/images/image1.png">
+    </div>
+    <div class="col-6 login_form">
+      <div class="container-fluid">
+
+        <div class="row">
+          <form control="" class="form-group" (ngSubmit)="onSubmit()">
+            <div class="row mt-5">
+              <h2>Log In</h2>
+            </div>
+            <div class="row">
+              <input type="email" name="username" id="username" class="form__input" placeholder="Email" required [(ngModel)]="credentials.email" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="row">
+              <!-- <span class="fa fa-lock"></span> -->
+              <input type="password" name="password" id="password" class="form__input" placeholder="Password" required [(ngModel)]="credentials.password" [ngModelOptions]="{standalone: true}">
+            </div>
+            <!--<div class="d-flex justify-content-center">
+              <input type="checkbox" name="remember_me" id="remember_me" class="me-1">
+              <label for="remember_me">Remember Me!</label>
+            </div>-->
+            <div class="row justify-content-center">
+              <input type="submit" value="Submit" class="btn">
+            </div>
+            <div class="row">
+              <p>Don't have an account? <br><a href="#" id="register">Register Here</a></p>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+<!--&lt;!&ndash; Footer &ndash;&gt;-->
+<!--<div class="container-fluid text-center footer">-->
+<!--  <p>Coded with &hearts; by <a href="https://bit.ly/yinkaenoch">Yinka.</a></p>-->
+<!--</div>-->
+

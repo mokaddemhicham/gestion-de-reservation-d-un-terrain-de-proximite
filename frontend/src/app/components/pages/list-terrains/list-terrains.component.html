@@ -1,51 +1,4 @@
-<app-info-tab></app-info-tab>
-<app-nav-bar></app-nav-bar>
-
-<section class="section-header">
-  <div class="background-overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 d-flex justify-content-center">
-        <div class="terrain-breadcrumb">
-          <div>
-            <span>
-              <a href="https://demo2.prestabrain.com/followme">
-                <span>MoulBallon</span>
-              </a>
-            </span> &gt; <span>Terrains</span>
-          </div>
-          <h1 class="header-title">Liste des Terrains</h1>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<<<<<<< HEAD
-<main class="bg-white">
-  <div class="container">
-    <app-terrain-search></app-terrain-search>
-    <div class="babe_search_results_filters mt-5 bg-white">
-      <div class="count-posts bg-white">
-        <span class="count">Showing 1-9 of 20</span>
-        results </div>
-      <div class="filter-sort"><span>Sort by</span><div class="input_select_field input_select_field_sr_sort_by " data-name="sr_sort_by" tabindex="0">
-        <a class="input_select_sort" href="">
-          <i class="fa fa-sort-alpha-down"></i>
-        </a>
-      </div>
-        <div class="input_select_field input_select_field_sr_sort_by ">
-          <form class="input_select_title">
-            <select class="form-select" name="sr_sort_by">
-              <option value="title_desc">Title (desc)</option>
-              <option value="title_asc">Title (asc)</option>
-              <option value="date_desc">Date (desc)</option>
-              <option value="date_asc">Date (asc)</option>
-              <option value="price_desc">Price (desc)</option>
-              <option value="price_asc">Price (asc)</option>
-            </select>
-          </form>
-        </div>
-=======
+<app-header-section pageTitle="Terrains" pageDescription="Listes des Terrains"></app-header-section>
 
 <div class="container">
   <app-terrain-search></app-terrain-search>
@@ -69,28 +22,17 @@
             <option value="price_asc">Price (asc)</option>
           </select>
         </form>
->>>>>>> e9d5882b1a91dd4f82e506d068197b6ea74cb5d4
       </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col-md-4 mb-5" *ngFor="let terrain of terrains">
-        <app-card-terrain [terrain]="terrain"></app-card-terrain>
-      </div>
-    </div>
-
-    <div class="babe_pager">
-      <span aria-current="page" class="page-numbers current">1</span>
-      <a class="page-numbers" href="page/2/index.htm?paged=2">2</a>
-      <a class="page-numbers" href="page/3/index.htm?paged=3">3</a>
-      <a class="next page-numbers" href="page/2/index.htm?paged=2">Next »</a>
     </div>
   </div>
-</main>
 
-<<<<<<< HEAD
-=======
+
+  <div class="row">
+    <div class="col-md-4 mb-5" *ngFor="let terrain of terrains">
+      <app-card-terrain [terrain]="terrain"></app-card-terrain>
+    </div>
+  </div>
+
   <div class="babe_pager">
     <span aria-current="page" class="page-numbers current">1</span>
     <a class="page-numbers" href="page/2/index.htm?paged=2">2</a>
@@ -98,5 +40,4 @@
     <a class="next page-numbers" href="page/2/index.htm?paged=2">Next »</a>
   </div>
 </div>
->>>>>>> e9d5882b1a91dd4f82e506d068197b6ea74cb5d4
 <app-footer></app-footer>

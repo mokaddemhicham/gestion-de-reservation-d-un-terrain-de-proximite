@@ -99,30 +99,30 @@
           <h2 class="terrain-name">Contact Propriétaire Terrain</h2>
           <div class="terrain-details-content ms-3 mt-3">
             <p class="terrain-description">
-              Rencontrez le propriétaire du terrain, <span class="text-black fw-bold">{{ terrain.proprietaire.nom }} {{ terrain.proprietaire.prenom }}</span>, qui est déterminé à rendre votre expérience aussi agréable que possible.
+              Rencontrez le propriétaire du terrain, <span class="text-black fw-bold">{{ terrain.proprietaire?.nom }} {{ terrain.proprietaire?.prenom }}</span>, qui est déterminé à rendre votre expérience aussi agréable que possible.
               <br>Vous pouvez le contacter directement pour toute question, réservation ou information supplémentaire concernant les terrains.
-              <br><span class="text-black fw-bold">{{ terrain.proprietaire.nom }} {{ terrain.proprietaire.prenom }}</span> est là pour s'assurer que votre visite soit sans tracas et répondre à toutes vos préoccupations.
+              <br><span class="text-black fw-bold">{{ terrain.proprietaire?.nom }} {{ terrain.proprietaire?.prenom }}</span> est là pour s'assurer que votre visite soit sans tracas et répondre à toutes vos préoccupations.
               <br>Découvrez ses coordonnées ci-dessous et n'hésitez pas à le contacter pour profiter pleinement de votre séjour sur nos terrains.
             </p>
             <blockquote class="px-4 py-1">
               <div class="item_info ms-4">
                 <h4 class="info-section-title"><i class="fa-regular fa-user me-2"></i> Nom & Prenom : </h4>
                 <span class="item-value">
-                {{ terrain.proprietaire.nom }} {{ terrain.proprietaire.prenom }}
+                {{ terrain.proprietaire?.nom }} {{ terrain.proprietaire?.prenom }}
               </span>
               </div>
 
               <div class="item_info ms-4 my-2">
                 <h4 class="info-section-title"><i class="fa-regular fa-envelope me-2"></i> Email : </h4>
                 <span class="item-value">
-                <a href="mailto:{{ terrain.proprietaire.email }}" class="ms-2" style="color: #2e934e">{{ terrain.proprietaire.email }}</a>
+                <a href="mailto:{{ terrain.proprietaire?.email }}" class="ms-2" style="color: #2e934e">{{ terrain.proprietaire?.email }}</a>
               </span>
               </div>
 
               <div class="item_info ms-4">
                 <h4 class="info-section-title"><i class="bi bi-telephone me-2"></i> Phone : </h4>
                 <span class="item-value">
-                {{ terrain.proprietaire.telephone }}
+                {{ terrain.proprietaire?.telephone }}
               </span>
               </div>
             </blockquote>

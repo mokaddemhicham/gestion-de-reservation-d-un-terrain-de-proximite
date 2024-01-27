@@ -1,0 +1,113 @@
+<!-- edit-client.component.html -->
+
+<!--<div *ngIf="clientToUpdate">
+  <h2>Edit Client</h2>
+  <form (submit)="updateClient()">
+    <div>
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" [(ngModel)]="clientToUpdate.nom" name="firstName" required>
+    </div>
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" [(ngModel)]="clientToUpdate.prenom" name="lastName" required>
+    </div>
+    &lt;!&ndash; Add other fields as needed (phone number, email, etc.) &ndash;&gt;
+
+    <button type="submit">Update</button>
+  </form>
+</div>-->
+<!-- edit-client.component.html -->
+<!--<div class="container-fluid" >
+  <div class="row main-content  text-center">
+    <div class="col-6 text-center company__info" style="background: radial-gradient(#fff,#2fce19);">
+      &lt;!&ndash;      <span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>&ndash;&gt;
+      &lt;!&ndash;      <h4 class="company_title">Your Company Logo</h4>&ndash;&gt;
+      <img src="assets/images/image1.png">
+    </div>
+    <div *ngIf="clientToUpdate" class="col-6 login_form">
+      <div class="container-fluid">
+        <div class="row">
+          <form (submit)="updateClient()">
+            <div class="row mt-5">
+              <h2>Edit Client</h2>
+            </div>
+            <div class="row">
+              <input type="text" id="firstName" [(ngModel)]="clientToUpdate.nom" name="firstName" class="form__input"
+                     required>
+            </div>
+            <div class="row">
+              <input type="text" id="lastName" [(ngModel)]="clientToUpdate.prenom" name="lastName" class="form__input"
+                     required>
+            </div>
+            &lt;!&ndash; Add other fields as needed (phone number, email, etc.) &ndash;&gt;
+
+            <div class="row justify-content-center">
+              <button type="submit" class="btn">Update</button>
+            </div>
+
+
+
+            &lt;!&ndash;<div class="d-flex justify-content-center">
+              <input type="checkbox" name="remember_me" id="remember_me" class="me-1">
+              <label for="remember_me">Remember Me!</label>
+            </div>&ndash;&gt;
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<div class="container rounded bg-white mt-5 mb-5 d-flex justify-content-center" *ngIf="clientToUpdate">
+  <div class="row">
+    <div class="col-md-3 border-right">
+      <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+          <!--https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"-->
+        <img class="rounded-circle mt-5" width="150px" src="assets/svgImage/7448202.jpg">
+        <span class="font-weight-bold">{{clientToUpdate.nom}}</span>
+      </div>
+    </div>
+    <div class="col-md-9 border-right">
+      <form class="p-3 py-5" #ngForm="ngForm" (ngSubmit)="updateClient()">
+        <div class="d-flex justify-content-between align-items-center mb-1">
+          <h4 class="text-right">Profile Settings</h4>
+        </div>
+        <div class="row mt-1">
+          <div class="col-md-6">
+            <label class="labels">Last Name</label>
+            <input type="text" class="form-control" [(ngModel)]="clientToUpdate.nom" placeholder="first name" name="firstName" required>
+          </div>
+          <div class="col-md-6">
+            <label class="labels">First Name</label>
+            <input type="text" class="form-control" [(ngModel)]="clientToUpdate.prenom" name="lastName" required placeholder="surname">
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <label class="labels">Email</label>
+            <input type="text" class="form-control" placeholder="enter email" name="email" [(ngModel)]="clientToUpdate.email" required>
+          </div>
+          <div class="col-md-6">
+            <label class="labels">Password</label>
+            <input type="text" class="form-control" placeholder="enter address line 2" name="password" [(ngModel)]="clientToUpdate.password" required>
+          </div>
+          <div class="col-md-6">
+            <label class="labels">Mobile Number</label>
+            <input type="text" class="form-control" placeholder="enter phone number" name="phoneNumber" [(ngModel)]="clientToUpdate.telephone" required>
+          </div>
+          <div class="col-md-6" *ngIf="clientToUpdate.adresse">
+            <label class="labels">Address Line 1</label>
+            <input type="text" class="form-control" placeholder="enter address line" name="adresse" [(ngModel)]="clientToUpdate.adresse" required>
+          </div>
+        </div>
+
+        <div class="mt-5 text-center">
+          <button class="btn btn-primary profile-button"  [disabled]="!ngForm.form.valid" type="submit">Save Profile</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+

@@ -15,14 +15,44 @@
 
       <!-- Login and Signup on the right -->
       <div class="d-flex align-items-center info">
-        <div class="me-4 hover-link">
+        <div class="me-4 hover-link"  *ngIf="!user">
 <!--          <i class="fas fa-user"></i>-->
           <i class="bi bi-shield-lock"></i>
-          <span class="ms-1">Login</span>
+          <span routerLink="signIN" class="ms-1">Login</span>
         </div>
         <div class="hover-link">
-          <i class="bi bi-person"></i>
-          <span class="ms-1">Sign Up</span>
+
+          <!--<span class="ms-1" routerLink="signUp" >Sign Up</span>
+
+            <span class="nav-link" *ngIf="currentUser">Welcome, {{ currentUser.email }}</span>-->
+         <!-- <span *ngIf="currentUser; else showSignUpLink">{{ currentUser.prenom }}</span>
+          <ng-template #showSignUpLink>
+            <span class="ms-1" routerLink="signUp">Sign Up</span>
+          </ng-template>-->
+          <!-- header.component.html -->
+
+          <div [matMenuTriggerFor]="menu" *ngIf="user; else showSignUpLink" >
+            <a [routerLink]="['/edit-client', user.uuid]" class="me-3" style="text-decoration: none">
+              <i class="bi bi-person"></i>{{ user?.prenom }}
+            </a>
+            <a [routerLink]="['/reservation', user.uuid]" class="me-3" style="">
+<!--              <i class="bi bi-ticket"></i>Mes Reservations-->
+              <i class="bi bi-ticket" style="transform: rotate(45deg); font-size: 14px"></i>Mes Reservations
+            </a>
+            <a (click)="logout()" class="text-success">
+              <i class="bi bi-box-arrow-left" style="font-size: 15px"></i>
+              <span class="text-success" style="font-size: 15px">Logout</span>
+            </a>
+          </div>
+          <mat-menu #menu="matMenu">
+            <!-- Add your list of options here -->
+            <button mat-menu-item (click)="logout()">Logout</button>
+            <!-- Add more options as needed -->
+          </mat-menu>
+
+          <ng-template #showSignUpLink>
+            <span class="ms-1" routerLink="signUP">Sign Up</span>
+          </ng-template>
         </div>
       </div>
     </div>

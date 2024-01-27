@@ -1,0 +1,40 @@
+#mine{
+
+}
+.signup-container {
+  max-width: 800px;
+  margin: auto;
+
+}
+
+.signup-form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.signup-form label {
+  color: #33a457;
+}
+
+.signup-form .form-check-input {
+  margin-top: 0.25rem;
+}
+.signup-form .btn-primary {
+  background-color: #33a457;
+  color: #fff;
+  width: 100%; /* Make the button full width */
+  border:none;
+}
+signup-form .form-check-input.custom-radio:checked {
+  background-color: #33a457;
+}
+
+.form-check-input:checked {
+  background-color: #33a457;
+}
+/* Adjust the width of the form for owners */
+.wider-form {
+  max-width: 800px; /* Adjust the desired width */
+}

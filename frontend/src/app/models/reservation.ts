@@ -7,7 +7,7 @@ export interface Reservation {
   date: Date;
   heure: number;
   etat: string;
-  user: User;
-  terrain: Terrain;
-  paiement: Paiement;
+  user?: User;
+  terrain?: Terrain;
+  paiement?: Paiement;
 }

@@ -153,32 +153,31 @@
   color: var(--accent);
 }
 
-/deep/ .mdc-text-field--filled {
+.mdc-text-field--filled {
   background-color: #fff !important;
   border-radius: 5px !important;
   border: 2px solid #e5e5e5;
   box-shadow: none;
   margin-bottom: 10px;
 }
-
-/deep/ .mdc-line-ripple::before, .mdc-line-ripple::after{
+.mdc-line-ripple::before, .mdc-line-ripple::after{
   border: none !important;
 }
 
-/deep/ .mat-mdc-form-field-icon-suffix{
+.mat-mdc-form-field-icon-suffix{
   align-self: inherit !important;
 }
 
-/deep/ .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label{
+.mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label{
   top: 50% !important;
 }
 
-/deep/ .mat-mdc-form-field-bottom-align::before{
+.mat-mdc-form-field-bottom-align::before{
   display: none !important;
 }
 
 
-/deep/ .mat-mdc-form-field{
+.mat-mdc-form-field{
   width: 100% !important;
 }
 

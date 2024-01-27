@@ -1,4 +1,11 @@
-
+/deep/ .cdk-overlay-backdrop {
+  z-index: 100000000 !important;
+  background-color: #04bb03 !important;
+}
+a{
+  text-decoration: none; color:var(--primary);
+  font-size: 14px;
+}
 .hover-link{
   cursor: pointer;
 }
@@ -6,6 +13,10 @@
   font-size: 14px;
   color: var(--text);
 
+}
+i{
+  font-size: 20px;
+  margin-right: 5px;
 }
 .hover-link .bi-person{
   font-size: 20px;
