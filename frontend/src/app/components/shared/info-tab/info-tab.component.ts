@@ -19,7 +19,7 @@ import {MatMenuModule} from "@angular/material/menu";
 export class InfoTabComponent {
   user: User | null | undefined; // Change the type based on your user model
   currentUser: User | null | undefined;
-  @Input("authenticatedUser") authenticatedUser!: User;
+  @Input() authenticatedUser!: User;
   constructor(private router: Router, private userService: SharedService) {}
 
   /*ngOnInit() {
@@ -46,6 +46,6 @@ export class InfoTabComponent {
     sessionStorage.removeItem('user');
 
     // Redirect to the login page or any other desired page
-    this.router.navigate(['/signIN']);
+    this.router.navigate(['/login']);
   }
 }

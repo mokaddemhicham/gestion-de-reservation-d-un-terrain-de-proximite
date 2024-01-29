@@ -1,4 +1,5 @@
 /* ----------------- General Rules ------------------ */
+
 html {
   scroll-behavior: smooth;
   background-color: #f1f1f1;
@@ -671,4 +672,20 @@ header nav .admin-profile .fa-sort-down{
     font-size: 20px;
     line-height: 28px;
   }
+
+}
+div > h4.logo1 {
+  font-size: 0; /* Hide the text by setting font size to 0 */
+  display: inline-block;
+  background: url('/assets/svgImage/soccer-ball.png') no-repeat ; /* Replace 'ball-icon.png' with the actual path to your ball icon */
+  width: 100px; /* Set a width */
+  height: 100px;
+  background-size: 50px 50px;
+  color: white;/* Set the width and height of the icon */
+  position: relative;
+  left: 8px;
+}
+.xng-breadcrumb-trail{
+  color: #9595d7 !important; /* Change the color to your preferred style */
+  font-weight: bold;
 }

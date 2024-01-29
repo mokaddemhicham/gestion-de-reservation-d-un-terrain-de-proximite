@@ -10,15 +10,20 @@ import { Observable } from 'rxjs';
 export class AuthenticationService {
   private apiUrl = 'http://localhost:8080/users'; // Replace with your API URL
   private isAdmin: boolean = false;
+  private isLogged: boolean = false;
   constructor(private http: HttpClient) {}
 
   signIn(credentials: { email: string; password: string }): Observable<any> {
+    console.log("credentials",credentials);
     // Implement the logic to send a sign-in request to your backend
+    this.isLogged = true;
     return this.http.post(`${this.apiUrl}/signin`, credentials);
   }
 
   handleSuccessfulSignIn(response: any): void {
     // Store user data in sessionStorage after successful sign-in
+    this.isLogged = true;
+    console.log("response",response);
     sessionStorage.setItem('user', JSON.stringify(response));
   }
   //
@@ -31,4 +36,7 @@ export class AuthenticationService {
     return this.isAdmin;
   }
 
+  isLoggedIn() {
+    return this.isLogged;
+  }
 }

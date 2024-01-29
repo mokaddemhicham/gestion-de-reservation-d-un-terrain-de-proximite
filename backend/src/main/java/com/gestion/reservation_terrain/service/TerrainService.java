@@ -71,4 +71,7 @@ public class TerrainService {
     }
 
 
+    public Long getTerrainCount() {
+        return terrainRepository.count();
+    }
 }

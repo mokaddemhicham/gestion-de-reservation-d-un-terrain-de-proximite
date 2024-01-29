@@ -17,23 +17,26 @@ import {EditClientComponent} from "./components/shared/edit-client/edit-client.c
 import {SigninComponent} from "./components/shared/signin/signin.component";
 import {AdminAuthGuard} from "./guards/auth.guard";
 import {ReservationComponent} from "./components/shared/reservation/reservation.component";
+import {AuthGuardLogged} from "./guards/alreadyLogged/auth-logged.guard";
+import {DashboardComponent} from "./components/admin/dashboard/dashboard.component";
+
 export const routes: Routes = [
-  {path: '', redirectTo: 'terrains', pathMatch: 'full'},
-  {path : 'terrains', 'component': ListTerrainsComponent, pathMatch: 'full'},
-  {path : 'terrains/:uuid', 'component': TerrainDetailsComponent, pathMatch: 'full'},
-  {path : 'clients', 'component': ClientsComponent, pathMatch: 'full', canActivate: [AdminAuthGuard]},
-  { path: 'edit-client/:id', component: EditClientComponent },
-  {path : 'signUP', 'component': SignUpComponent, pathMatch: 'full'},
-  {path : 'login', 'component': SigninComponent, pathMatch: 'full'},
-  {path : 'terrain/:uuid', 'component': TerrainDetailsComponent, pathMatch: 'full'},
-  { path: 'reservations', component: ReservationComponent },
-  {path : 'reservation/checkout/:orderUuid', component: CheckoutComponent, pathMatch: 'full'},
-  {path: 'reservation/confirmation/:orderUuid', component: ConfirmationComponent, pathMatch: 'full'},
-  {path: 'admin', component: SideBarComponent, children: [
-      {path: 'terrains', component: TerrainsComponent, pathMatch: 'full'},
-      {path: 'terrains/add', component: AddTerrainComponent, pathMatch: 'full'},
-      {path: 'terrains/edit/:terrainUuid', component: EditTerrainComponent, pathMatch: 'full'},
-      {path: 'terrains/:terrainUuid/services', component: TerrainServicesComponent, pathMatch: 'full'},
-      {path: 'terrains/:terrainUuid/disponibilites', component: TerrainDisponibilitesComponent, pathMatch: 'full'},
+  {path : 'terrains', 'component': ListTerrainsComponent, pathMatch: 'full',data: { breadcrumb: 'Terrains' }},
+  {path : 'terrains/:uuid', 'component': TerrainDetailsComponent, pathMatch: 'full',data: { breadcrumb: 'Terrain Details' }},
+  {path: 'edit-client/:id', component: EditClientComponent ,data: { breadcrumb: 'Edit Client' } },
+  {path : 'signUP', 'component': SignUpComponent, pathMatch: 'full', data: { breadcrumb: 'Sign Up' }},
+  {path : 'login', 'component': SigninComponent, pathMatch: 'full' , canActivate: [AuthGuardLogged],  data: { breadcrumb: 'Login' } },
+  {path : 'terrain/:uuid', 'component': TerrainDetailsComponent, pathMatch: 'full',data: { breadcrumb: 'Terrain Details' }},
+  {path : 'reservation/checkout/:orderUuid', component: CheckoutComponent, pathMatch: 'full', data: { breadcrumb: 'Checkout' }},
+  {path: 'reservation/confirmation/:orderUuid', component: ConfirmationComponent, pathMatch: 'full', data: { breadcrumb: 'Confirmation' } },
+  {path: 'admin', component: SideBarComponent,data: { breadcrumb: 'Admin' }, children: [
+      {path: '', component: DashboardComponent, pathMatch: 'full', data: { breadcrumb: 'Dashboard' }},
+      {path : 'users', 'component': ClientsComponent, pathMatch: 'full', data: {breadcrumb:'Users'} /*canActivate: [AdminAuthGuard]*/},
+      {path: 'terrains', component: TerrainsComponent, pathMatch: 'full', data: { breadcrumb: 'Terrains' }},
+      { path: 'reservations', component: ReservationComponent, data: { breadcrumb: 'Reservations' } },
+      {path: 'terrains/add', component: AddTerrainComponent, pathMatch: 'full', data: { breadcrumb: 'Add Terrain' }},
+      {path: 'terrains/edit/:terrainUuid', component: EditTerrainComponent, pathMatch: 'full', data: { breadcrumb: 'Edit Terrain' }},
+      {path: 'terrains/:terrainUuid/services', component: TerrainServicesComponent, pathMatch: 'full', data: { breadcrumb: 'Terrain Services' }},
+      {path: 'terrains/:terrainUuid/disponibilites', component: TerrainDisponibilitesComponent, pathMatch: 'full', data: { breadcrumb: 'Terrain Disponibilites' }},
     ]}
 ];

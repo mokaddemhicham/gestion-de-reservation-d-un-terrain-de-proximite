@@ -1,10 +1,12 @@
 package com.gestion.reservation_terrain.service;
 
+import com.gestion.reservation_terrain.dto.UserDto;
 import com.gestion.reservation_terrain.model.User;
 import com.gestion.reservation_terrain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -39,6 +41,16 @@ public class UserService {
     }
 
     public User getUserByEmailAndPassword(String email, String password) {
+        System.out.println("email mmmmm: "+email);
         return userRepository.findByEmailAndPassword(email, password);
     }
+
+    /*public Iterable<UserDto> getallWithDiscriminator() {
+        return userRepository.findAllWithDiscriminator();
+    }*/
+    public List<Object[]> getAllUsersWithDiscriminator() {
+        return userRepository.findAllUsersWithDiscriminator();
+    }
+
+
 }

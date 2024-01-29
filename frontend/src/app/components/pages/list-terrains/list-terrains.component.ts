@@ -7,6 +7,8 @@ import {MySwiperComponent} from "../../shared/my-swiper/my-swiper.component";
 import {NavBarComponent} from "../../shared/nav-bar/nav-bar.component";
 import {FooterComponent} from "../../shared/footer/footer.component";
 import {HeaderSectionComponent} from "../../shared/header-section/header-section.component";
+import {User} from "../../../models/user";
+import {TeamComponent} from "../../shared/team/team.component";
 
 @Component({
   selector: 'app-list-terrains',
@@ -19,12 +21,18 @@ import {HeaderSectionComponent} from "../../shared/header-section/header-section
     MySwiperComponent,
     NavBarComponent,
     FooterComponent,
-    HeaderSectionComponent
+    HeaderSectionComponent,
+    TeamComponent
   ],
   templateUrl: './list-terrains.component.html',
   styleUrl: './list-terrains.component.css'
 })
 export class ListTerrainsComponent {
+  user:User;
+  constructor() {
+    this.user = JSON.parse(sessionStorage.getItem('user') || '{}');
+    console.log("user",this.user);
+  }
   terrains: any[] = [
     {
       'id': 1,
@@ -105,4 +113,5 @@ export class ListTerrainsComponent {
       ]
     },
   ];
+
 }

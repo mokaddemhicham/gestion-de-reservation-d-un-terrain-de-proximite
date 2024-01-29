@@ -48,7 +48,9 @@ export class TerrainService {
     console.log(uuid, service)
     return this.http.post<Service>(`${this.apiUrl}/${uuid}/services/add`, service);
   }
-
+  getTerrainCount(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/terrainCount`);
+  }
   deleteService(uuid: string) {
 
   }

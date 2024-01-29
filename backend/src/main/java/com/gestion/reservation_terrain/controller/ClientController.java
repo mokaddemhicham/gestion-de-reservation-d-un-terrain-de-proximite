@@ -43,4 +43,9 @@ public class ClientController {
     public void deleteClient(@PathVariable UUID uuid){
         clientService.deleteClient(uuid);
     }
+
+    @GetMapping(path="/clientCount")
+    public Long getUserCount(){
+        return clientService.getUserCount();
+    }
 }

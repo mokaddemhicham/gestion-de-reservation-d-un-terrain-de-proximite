@@ -43,5 +43,9 @@ public class ProprietaireTerrainController{
     public void deleteProprietaireTerrain(@PathVariable UUID uuid){
         proprietaireTerrainService.deleteProprietaireTerrain(uuid);
     }
+    @GetMapping(path="/proprietaireCount")
+    public long getProprietaireCount(){
+        return proprietaireTerrainService.getProprietaireCount();
+    }
 
 }

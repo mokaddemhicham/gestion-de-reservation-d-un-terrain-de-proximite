@@ -114,4 +114,8 @@ public class TerrainController {
     public ResponseEntity<Service> addService(@PathVariable("uuid") UUID uuid, @RequestBody Service service){
         return ResponseEntity.ok().body(terrainService.saveService(uuid, service));
     }
+    @GetMapping("/terrainCount")
+    public ResponseEntity<Long> getTerrainCount(){
+        return ResponseEntity.ok().body(terrainService.getTerrainCount());
+    }
 }

@@ -18,7 +18,7 @@
         <div class="me-4 hover-link"  *ngIf="!user">
 <!--          <i class="fas fa-user"></i>-->
           <i class="bi bi-shield-lock"></i>
-          <span routerLink="signIN" class="ms-1">Login</span>
+          <span routerLink="/login" class="ms-1">Login</span>
         </div>
         <div class="hover-link">
 
@@ -31,9 +31,9 @@
           </ng-template>-->
           <!-- header.component.html -->
 
-          <div [matMenuTriggerFor]="menu" *ngIf="user; else showSignUpLink" >
-            <a [routerLink]="['/edit-client', user.uuid]" class="me-3" style="text-decoration: none">
-              <i class="bi bi-person"></i>{{ user.prenom }}
+          <div  *ngIf="user; else showSignUpLink" >
+            <a [routerLink]="['/edit-client', authenticatedUser.uuid]" class="me-3" style="text-decoration: none">
+              <i class="bi bi-person"></i>{{ authenticatedUser.prenom }}
             </a>
             <a [routerLink]="['/reservation', authenticatedUser.uuid]" class="me-3" style="">
 <!--              <i class="bi bi-ticket"></i>Mes Reservations-->
@@ -51,7 +51,7 @@
           </mat-menu>
 
           <ng-template #showSignUpLink>
-            <span class="ms-1" routerLink="signUP">Sign Up</span>
+            <span class="ms-1" routerLink="/signUP">Sign Up</span>
           </ng-template>
         </div>
       </div>

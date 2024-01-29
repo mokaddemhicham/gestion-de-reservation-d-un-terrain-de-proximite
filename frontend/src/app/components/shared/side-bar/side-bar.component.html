@@ -2,19 +2,25 @@
 <!-- Start Slidebar -->
 <aside class="slidebar" [class.active]="isSidebarActive" [class.hidden]="!isSidebarActive">
   <div class="slidebar-brand">
-    <div class="logo">
-      <img src="" alt="logo" class="img-fluid" >
+    <div class="">
+<!--      <img src="" alt="logo" class="img-fluid" >-->
+      <!--<h4 [class.logo1]="!isSidebarActive" class="text-white" style="font-family: 'Papyrus', 'Papyrus Condensed', 'Comic Sans MS', 'Comic Sans', cursive !important;">
+        M⚽︎UL LBAL⚽︎UN
+      </h4>-->
+      <span class="text-white fs-1" [ngStyle]="{'display': !isSidebarActive ? 'inline' : 'none'}">⚽︎</span>
+      <h4 [ngStyle]="{'display': isSidebarActive ? 'inline' : 'none'}" class="text-white" style="font-family: 'Papyrus', 'Papyrus Condensed', 'Comic Sans MS', 'Comic Sans', cursive !important;">
+        M⚽︎UL LBAL⚽︎UN
+      </h4>
+
     </div>
   </div>
   <div class="slidebar-menu">
     <ul>
       <li><a routerLink="admin"><i class="fas fa-tachometer-alt"></i><span>Tableau de bord</span></a></li>
       <li><a routerLink="terrains"><i class="fas fa-layer-group"></i> <span>Terrains</span></a></li>
-      <li><a href=""><i class="fas fa-boxes"></i> <span>Matériel</span></a></li>
-      <li><a href=""><i class="fas fa-users"></i>
+      <li *ngIf="user.role=='admin'"><a routerLink="users"><i class="fas fa-users"></i>
         <span>Utilisateurs</span></a></li>
-      <li><a href=""><i class="fas fa-cogs"></i> <span>Services</span></a></li>
-      <li><a href=""><i class="fas fa-history"></i> <span>Demandes</span></a></li>
+      <li><a routerLink="reservations"><i class="fas fa-history"></i> <span>Reservations</span></a></li>
     </ul>
   </div>
 </aside>
@@ -31,10 +37,10 @@
         <div>
           <div class="admin-profile  d-flex justify-content-between">
             <div class="admin-info">
-              <h4>H. Mokaddem</h4>
-              <p class="text-primary">Admin</p>
+              <h4>{{user.prenom}} {{user.nom}}</h4>
+              <p class="text-primary">{{ user.role =="proprietaireTerrain" ? "Proprietaire Terrain" : "Admin" }}</p>
             </div>
-            <a href="" class="btn btn-danger mx-3" ><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+            <a (click)="logout()" class="btn btn-danger mx-3" ><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
             <form method="POST" id="logout-form" action="">
 
             </form>
@@ -43,9 +49,14 @@
       </div>
 
       <div aria-label="breadcrumb" id="breadcrumb">
-        <ol class="breadcrumb">
+        <!--<ol class="breadcrumb">
           <li class="breadcrumb-item"><a href=""><i class="fas fa-home"></i> Accueil</a></li>
-        </ol>
+        </ol>-->
+
+        <xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
+        <ng-template #iconTemplate>
+          <mat-icon>chevron_right</mat-icon>
+        </ng-template>
       </div>
 
 
