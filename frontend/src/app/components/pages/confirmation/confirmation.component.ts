@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FooterComponent} from "../../shared/footer/footer.component";
 import {HeaderSectionComponent} from "../../shared/header-section/header-section.component";
 import {InfoTabComponent} from "../../shared/info-tab/info-tab.component";
@@ -7,6 +7,7 @@ import {Reservation} from "../../../models/reservation";
 import {TerrainService} from "../../../services/terrain/terrain.service";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {SlicePipe} from "@angular/common";
+import {PdfGenerationService} from "../../../services/pdf-generation/pdf-generation.service";
 
 @Component({
   selector: 'app-confirmation',
@@ -22,12 +23,13 @@ import {SlicePipe} from "@angular/common";
   templateUrl: './confirmation.component.html',
   styleUrl: './confirmation.component.css'
 })
-export class ConfirmationComponent {
+export class ConfirmationComponent implements OnInit{
   reservation: Reservation = {} as Reservation;
   reservation_uuid!: string;
+  user: string = sessionStorage.getItem("user") || ""
 
   constructor(private terrainService: TerrainService, private route: ActivatedRoute,
-              private router: Router) {
+              private pdfGenerationService: PdfGenerationService) {
   }
 
   ngOnInit(): void {
@@ -54,5 +56,11 @@ export class ConfirmationComponent {
     })
   }
 
+  generatePdf(reservation: Reservation): void {
+    // Generate PDF using the PdfGenerationService
+    this.pdfGenerationService.generatePdf(reservation);
+  }
 
+
+  protected readonly JSON = JSON;
 }

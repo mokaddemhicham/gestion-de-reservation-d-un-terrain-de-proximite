@@ -62,6 +62,10 @@ export class TerrainService {
     return this.http.post<Service[]>(`${this.apiUrl}/${uuid}/services/add`, services);
   }
 
+  getTerrainCount(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/terrainCount`);
+  }
+
   deleteService(serviceUuid: string, terrainUuid: string) {
     return this.http.delete<void>(`${this.apiUrl}/${terrainUuid}/services/delete/${serviceUuid}`)
   }
@@ -85,8 +89,6 @@ export class TerrainService {
   public getHeuresAvailables(date: string, terrainId: string):Observable<any>{
     return this.http.get<any>(`${this.apiUrl}/heures-available?date=${date}&terrainId=${terrainId}`)
   }
-
-
   public addReservation(reservation: ReservationDto):Observable<Reservation>{
     return this.http.post<Reservation>(`${this.apiUrl2}/add`, reservation);
   }

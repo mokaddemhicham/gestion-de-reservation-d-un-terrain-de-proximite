@@ -9,15 +9,14 @@ import {ProprietaireTerrain} from "../../models/proprietaire-terrain";
   providedIn: 'root'
 })
 export class ClientService {
-  private apiUrl = 'http://localhost:8080/clients'; // Update with your Spring Boot backend URL proprietaire-terrains
+  private apiUrl = 'http://localhost:8080/users'; // Update with your Spring Boot backend URL proprietaire-terrains
   private apiUrl2 = 'http://localhost:8080/proprietaire-terrains'; // Update with your Spring Boot backend URL
-
+  private apiUrl3 = 'http://localhost:8080/clients'; // Update with your Spring Boot backend URL
   constructor(private http: HttpClient) {}
   getAll(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}`);
   }
   saveClient(client: User): Observable<User> {
-
     return this.http.post<User>(`${this.apiUrl}/save`, client);
   }
   saveOwner(client: User): Observable<User> {
@@ -30,7 +29,7 @@ export class ClientService {
   }
 
   updateClient(clientId: string | undefined, clientToUpdate: User | undefined) {
-    const url = `${this.apiUrl}/update`;
+    const url = `${this.apiUrl3}/update`;
     return this.http.put(url, clientToUpdate);
   }
 
@@ -38,5 +37,12 @@ export class ClientService {
     const url = `${this.apiUrl}/delete/${uuid}`;
     return this.http.delete(url);
   }
-
+  getUserCount(): Observable<number> {
+    const url = `${this.apiUrl3}/clientCount`;
+    return this.http.get<number>(url);
+  }
+  getPrioprietaireCount(): Observable<number> {
+    const url = `${this.apiUrl2}/proprietaireCount`;
+    return this.http.get<number>(url);
+  }
 }

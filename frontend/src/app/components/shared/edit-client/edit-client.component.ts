@@ -7,6 +7,7 @@ import {CommonModule} from "@angular/common";
 import {InfoTabComponent} from "../info-tab/info-tab.component";
 import {NavBarComponent} from "../nav-bar/nav-bar.component";
 import {FooterComponent} from "../footer/footer.component";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-edit-client',
@@ -20,7 +21,7 @@ import {FooterComponent} from "../footer/footer.component";
 export class EditClientComponent {
   clientId : string ="" ;
   clientToUpdate: User = {} as User
-  constructor(private route: ActivatedRoute, private router: Router, private clientService: ClientService) {}
+  constructor(private route: ActivatedRoute, private router: Router, private clientService: ClientService, private toastr: ToastrService) {}
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.clientId = params['id'];
@@ -47,12 +48,29 @@ export class EditClientComponent {
       (response) => {
         console.log('Client updated successfully:', response);
         sessionStorage.setItem("user", JSON.stringify(response))
-        this.loadClientForUpdate()
+        this.loadClientForUpdate();
+        // this.router.navigate(['/terrains']);
+        this.showSuccess();
       },
       (error) => {
         console.error('Error updating client:', error);
-        // Handle the error
+        this.showError(error.toString());
       }
     );
+  }
+  showSuccess() {
+    this.toastr.success('Le client a été modifié avec succès !');
+  }
+
+  showError(message: string) {
+    this.toastr.error(message);
+  }
+
+  showWarning() {
+    this.toastr.warning('This is a warning message.', 'Warning');
+  }
+
+  showInfo() {
+    this.toastr.info('This is an info message.', 'Info');
   }
 }

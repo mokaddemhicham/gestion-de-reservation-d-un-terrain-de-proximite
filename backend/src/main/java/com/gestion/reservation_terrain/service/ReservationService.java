@@ -1,5 +1,6 @@
 package com.gestion.reservation_terrain.service;
 
+import com.gestion.reservation_terrain.dto.MonthlyReservationDTO;
 import com.gestion.reservation_terrain.model.*;
 import com.gestion.reservation_terrain.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,7 +115,7 @@ public class ReservationService {
 
     public Reservation updateReservation(UUID uuid, Paiement paiement) {
         Optional<Reservation> optionalReservation = reservationRepository.findById(uuid);
-        if (!optionalReservation.isPresent()){
+        if (!optionalReservation.isPresent()) {
             return null;
         }
         Reservation reservation = optionalReservation.get();
@@ -122,5 +123,27 @@ public class ReservationService {
         paiement.setReservation(reservation);
         reservation.setPaiement(paiement);
         return reservationRepository.save(reservation);
+    }
+    public void deleteReservation(UUID uuid) {
+        reservationRepository.deleteById(uuid);
+    }
+
+    public long getReservationCount() {
+        return reservationRepository.count();
+    }
+    public List<MonthlyReservationDTO> getMonthlyReservations(){
+        List<Object[]> monthlyReservations = reservationRepository.countMonthlyReservations();
+        List<MonthlyReservationDTO> monthlyReservationDTOS = new ArrayList<>();
+        for (Object[] monthlyReservation: monthlyReservations){
+            MonthlyReservationDTO monthlyReservationDTO = new MonthlyReservationDTO();
+            monthlyReservationDTO.setMonth((String) monthlyReservation[0]);
+            monthlyReservationDTO.setNumberOfReservations((Long) monthlyReservation[1]);
+            monthlyReservationDTOS.add(monthlyReservationDTO);
+        }
+        return monthlyReservationDTOS;
+    }
+
+    public List<Reservation> getReservationsByProprietaire(UUID idProprietaire) {
+        return reservationRepository.getReservationsByProprietaire(idProprietaire);
     }
 }

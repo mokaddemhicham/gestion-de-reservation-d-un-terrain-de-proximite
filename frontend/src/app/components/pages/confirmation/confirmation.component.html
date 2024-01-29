@@ -1,4 +1,4 @@
-<app-info-tab></app-info-tab>
+<app-info-tab [authenticatedUser]="JSON.parse(user)"></app-info-tab>
 <app-nav-bar></app-nav-bar>
 <app-header-section pageTitle="Confirmation" pageDescription="Confirmation"></app-header-section>
 
@@ -73,7 +73,7 @@
       </div>
     </div>
     <div class="download-ticket d-flex justify-content-end">
-      <button type="button" class="btn button checkout_form_submit mt-3"><i class="bi bi-download fs-6"></i> Telecharger Ticket</button>
+      <button type="button" (click)="generatePdf(reservation)" class="btn button checkout_form_submit mt-3"><i class="bi bi-download fs-6"></i> Telecharger Ticket</button>
     </div>
   </div>
 </div>

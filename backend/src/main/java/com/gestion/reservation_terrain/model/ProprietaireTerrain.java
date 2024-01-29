@@ -41,6 +41,10 @@ public class ProprietaireTerrain extends User {
         terrain.setProprietaire(this);
     }
 
+    public String getAdresse() {
+        return adresse;
+    }
+
     public void removeTerrain(Terrain terrain){
         terrains.remove(terrain);
         terrain.setProprietaire(null);

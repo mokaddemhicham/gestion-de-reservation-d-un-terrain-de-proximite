@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
-import {FormsModule} from "@angular/forms";
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../../services/authentication/authentication.service";
 import {SharedService} from "../../../services/shared.service";
 import {HeaderSectionComponent} from "../header-section/header-section.component";
 import {FooterComponent} from "../footer/footer.component";
 import {InfoTabComponent} from "../info-tab/info-tab.component";
 import {NavBarComponent} from "../nav-bar/nav-bar.component";
+import {error} from "@angular/compiler-cli/src/transformers/util";
+import {ToastrService} from "ngx-toastr";
+import {User} from "../../../models/user";
 
 @Component({
   selector: 'app-signin',
@@ -16,17 +19,20 @@ import {NavBarComponent} from "../nav-bar/nav-bar.component";
     HeaderSectionComponent,
     FooterComponent,
     InfoTabComponent,
-    NavBarComponent
+    NavBarComponent,
+    ReactiveFormsModule
   ],
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.css'
 })
 export class SigninComponent {
 
+
+
   credentials = { email: '', password: '' };
   private isAuthenticated: boolean =false;
 
-  constructor(private authService: AuthenticationService, private sharedService: SharedService, private router: Router) {}
+  constructor(private toastr: ToastrService,private authService: AuthenticationService, private sharedService: SharedService, private router: Router) {}
 
   onSubmit() {
     // Call your authentication service to handle the sign-in logic
@@ -38,7 +44,12 @@ export class SigninComponent {
         // Redirect to a different page after successful sign-in
         //this.router.navigate(['/terrains'], { state: { user: response } });
         this.authService.handleSuccessfulSignIn(user);
-        this.router.navigate(['/terrains']);
+        if (user.role=="client"){
+          this.router.navigate(['/terrains']);
+        }else{
+          this.router.navigate(['/admin']);
+        }
+
       },
       (error) => {
         console.error('Error signing in:', error);
@@ -46,6 +57,20 @@ export class SigninComponent {
       }
     );
   }
+  showSuccess() {
+    this.toastr.success('Le terrain a été ajouté avec succès !');
+  }
 
+  showError(message: string) {
+    this.toastr.error(message);
+  }
+
+  showWarning() {
+    this.toastr.warning('This is a warning message.', 'Warning');
+  }
+
+  showInfo() {
+    this.toastr.info('This is an info message.', 'Info');
+  }
 }
 

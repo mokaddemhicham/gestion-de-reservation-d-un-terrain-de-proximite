@@ -31,6 +31,7 @@ export class CheckoutComponent implements OnInit{
   reservation: Reservation = {} as Reservation;
   reservation_uuid!: string;
   paiementForm!: FormGroup;
+  user: string = sessionStorage.getItem("user") || ""
   constructor(private terrainService: TerrainService, private route: ActivatedRoute,
               private router: Router, private fb: FormBuilder) {
     this.paiementForm = this.fb.group({
@@ -86,4 +87,6 @@ export class CheckoutComponent implements OnInit{
     })
 
   }
+
+  protected readonly JSON = JSON;
 }

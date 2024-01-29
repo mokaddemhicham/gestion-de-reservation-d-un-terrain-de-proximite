@@ -146,10 +146,10 @@ public class TerrainService {
 
     public Boolean updateDisponibilite(UUID uuid, Disponibilite disponibilite) {
         Optional<Terrain> optionalTerrain = getTerrain(uuid);
-        if (optionalTerrain.isPresent()){
+        if (optionalTerrain.isPresent()) {
             Terrain terrain = optionalTerrain.get();
             Disponibilite d = disponibiliteService.checkIfDisponibiliteExist(disponibilite);
-            if (d == null){
+            if (d == null) {
                 disponibilite.setUuid(null);
                 terrain.addDisponibilite(disponibilite);
                 terrainRepository.save(terrain);
@@ -160,5 +160,8 @@ public class TerrainService {
             return true;
         }
         return false;
+    }
+    public Long getTerrainCount() {
+        return terrainRepository.count();
     }
 }

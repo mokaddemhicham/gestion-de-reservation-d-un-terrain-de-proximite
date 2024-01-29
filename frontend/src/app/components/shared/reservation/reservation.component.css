@@ -16,3 +16,6 @@
   fill: #fff !important;
   cursor: pointer;
 }
+.mat-mdc-table .mat-mdc-header-cell, .mdc-data-table__row:last-child .mat-mdc-cell {
+  text-align: center;
+}

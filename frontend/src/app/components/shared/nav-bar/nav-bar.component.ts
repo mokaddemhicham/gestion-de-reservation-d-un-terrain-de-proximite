@@ -1,13 +1,15 @@
 import {Component, ElementRef, HostListener} from '@angular/core';
 import {NgClass} from "@angular/common";
 import {RouterLink} from "@angular/router";
+import {BreadcrumbModule} from "@coreui/angular";
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
   imports: [
     NgClass,
-    RouterLink
+    RouterLink,
+    BreadcrumbModule
   ],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'

@@ -157,5 +157,8 @@ public class TerrainController {
         return ResponseEntity.ok().body(terrainService.deleteDisponibilite(uuid, disponibiliteUuid));
     }
 
-
+    @GetMapping("/terrainCount")
+    public ResponseEntity<Long> getTerrainCount(){
+        return ResponseEntity.ok().body(terrainService.getTerrainCount());
+    }
 }

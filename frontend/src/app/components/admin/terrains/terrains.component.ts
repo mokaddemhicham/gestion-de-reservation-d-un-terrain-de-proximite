@@ -16,31 +16,35 @@ import {TerrainService} from "../../../services/terrain/terrain.service";
 import {NgOptimizedImage, SlicePipe} from "@angular/common";
 import Swal from "sweetalert2";
 import {error} from "@angular/compiler-cli/src/transformers/util";
+import {FooterComponent} from "../../shared/footer/footer.component";
+import {MySwiperComponent} from "../../shared/my-swiper/my-swiper.component";
 
 @Component({
   selector: 'app-terrains',
   standalone: true,
-  imports: [
-    MatCardModule,
-    MatPaginatorModule,
-    MatTableModule,
-    ModalHeaderComponent,
-    ModalBodyComponent,
-    ModalComponent,
-    ModalFooterComponent,
-    ButtonDirective,
-    ModalTitleDirective,
-    ButtonCloseDirective,
-    FormModule,
-    FormDirective,
-    FormLabelDirective,
-    FormControlDirective,
-    FormTextDirective,
-    RouterLink,
-    NgOptimizedImage,
-    SlicePipe,
+    imports: [
+        MatCardModule,
+        MatPaginatorModule,
+        MatTableModule,
+        ModalHeaderComponent,
+        ModalBodyComponent,
+        ModalComponent,
+        ModalFooterComponent,
+        ButtonDirective,
+        ModalTitleDirective,
+        ButtonCloseDirective,
+        FormModule,
+        FormDirective,
+        FormLabelDirective,
+        FormControlDirective,
+        FormTextDirective,
+        RouterLink,
+        NgOptimizedImage,
+        SlicePipe,
+        FooterComponent,
+        MySwiperComponent,
 
-  ],
+    ],
   templateUrl: './terrains.component.html',
   styleUrl: './terrains.component.css'
 })

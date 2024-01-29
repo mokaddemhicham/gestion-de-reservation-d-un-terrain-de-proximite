@@ -1,0 +1,12 @@
+.description{
+  color: #717d88;
+  line-height: 30px;
+  box-sizing: border-box;
+}
+.frameOne{
+  transform: rotate(10deg);
+  width: 350px;
+  height: 250px;
+  background-color: #e3e6e8;
+  border-radius: 5px;
+}

@@ -26,6 +26,7 @@ import {FooterComponent} from "../../shared/footer/footer.component";
 import {TerrainService} from "../../../services/terrain/terrain.service";
 import {Reservation} from "../../../models/reservation";
 import {ReservationDto} from "../../../models/reservationDto";
+import {User} from "../../../models/user";
 
 @Component({
   selector: 'app-terrain',
@@ -66,6 +67,7 @@ export class TerrainDetailsComponent implements OnInit{
   reservationForm!: FormGroup;
   availableHours: number[] = [];
   isAvailables: boolean[] = [];
+  user: string = sessionStorage.getItem("user") || ""
   constructor(private fb: FormBuilder, private terrainService: TerrainService, private route: ActivatedRoute,
               private router: Router) { }
 
@@ -169,7 +171,7 @@ export class TerrainDetailsComponent implements OnInit{
     reservation.date = this.reservationForm.value.selectedDate
     console.log(reservation.date.getDate()-1)
     reservation.heure = parseInt(this.reservationForm.value.time)
-    reservation.user = "02ba7822-aac1-4ca2-979b-4ca5623ae014"
+    reservation.user = JSON.parse(this.user).uuid
     reservation.terrain = this.terrainUuid
     this.terrainService.addReservation(reservation).subscribe({
       next: res =>{
@@ -183,4 +185,5 @@ export class TerrainDetailsComponent implements OnInit{
     })
   }
 
+  protected readonly JSON = JSON;
 }

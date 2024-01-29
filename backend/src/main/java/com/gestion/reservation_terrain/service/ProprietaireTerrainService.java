@@ -39,4 +39,7 @@ public class ProprietaireTerrainService extends UserService{
     }
 
 
+    public long getProprietaireCount() {
+        return proprietaireTerrainRepository.count();
+    }
 }

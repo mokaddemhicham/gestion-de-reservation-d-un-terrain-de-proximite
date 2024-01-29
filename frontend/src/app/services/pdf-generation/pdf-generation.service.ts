@@ -73,7 +73,7 @@ export class PdfGenerationService {
                     { text: 'Football Field Reservation Ticket', style: 'header' },
                     { text: `Date: ${formattedDate}`, margin: [0, 0, 0, 10], style: 'secondHeader' },
                     { text: `Time Slot: ${data.heure}`, margin: [0, 0, 0, 10], style: 'secondHeader' },
-                    { text: `Reserved by: ${data.user?.prenom}`, margin: [0, 0, 0, 10], style: 'secondHeader'},
+                    { text: `Reserved by: ${data.user?.nom}`, margin: [0, 0, 0, 10], style: 'secondHeader'},
                     { text: `Football Field: ${data.terrain?.nom}`, margin: [0, 0, 0, 10],style: 'secondHeader' },
                     { text: `Reservation ID: ${data.uuid}`, color: '#001f3f', fontSize:10, margin: [0, 15, 0, 0] },
                   ],

@@ -11,6 +11,8 @@ import {PageableDto} from "../../../models/pageableDto";
 import {Terrain} from "../../../models/terrain";
 import {TerrainService} from "../../../services/terrain/terrain.service";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {User} from "../../../models/user";
+import {TeamComponent} from "../../shared/team/team.component";
 
 @Component({
   selector: 'app-list-terrains',
@@ -26,7 +28,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     HeaderSectionComponent,
     MatPaginatorModule,
     NgClass,
-    NgIf
+    NgIf,
+    TeamComponent
   ],
   templateUrl: './list-terrains.component.html',
   styleUrl: './list-terrains.component.css'
@@ -34,8 +37,11 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 export class ListTerrainsComponent implements OnInit{
   terrainsPageable: PageableDto<Terrain> = {} as PageableDto<Terrain>;
   totalElements: number = 0;
+  user:User;
 
   constructor(private terrainService: TerrainService) {
+    this.user = JSON.parse(sessionStorage.getItem('user') || '{}');
+    console.log("user",this.user);
   }
 
   ngOnInit(): void {
@@ -57,6 +63,4 @@ export class ListTerrainsComponent implements OnInit{
   goToPage(i: number) {
     this.fetchData(i)
   }
-
-  protected readonly length = length;
 }

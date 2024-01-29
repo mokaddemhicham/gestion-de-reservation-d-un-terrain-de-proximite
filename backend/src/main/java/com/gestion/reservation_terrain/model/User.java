@@ -3,15 +3,20 @@ package com.gestion.reservation_terrain.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+
 @Data
 @Entity
 @Table(name = "user")
 @Inheritance
+@NoArgsConstructor
 @DiscriminatorColumn(name = "role")
 public class User {
 
@@ -40,9 +45,19 @@ public class User {
         this.telephone = telephone;
         this.password = password;
     }
-    public User() {
+
+    @Transient
+    public String getRole() {
+        return this.getClass().getAnnotation(DiscriminatorValue.class).value();
     }
 
 
+    public String getCin() {
+        return null;
+    }
 
+
+    public String getAdresse() {
+        return null;
+    }
 }

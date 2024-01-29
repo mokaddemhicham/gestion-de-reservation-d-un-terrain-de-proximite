@@ -38,4 +38,8 @@ public class ClientService {
     public void deleteClient(UUID uuid){
         clientRepository.deleteById(uuid);
     }
+
+    public Long getUserCount() {
+        return clientRepository.count();
+    }
 }

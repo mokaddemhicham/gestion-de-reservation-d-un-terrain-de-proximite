@@ -11,7 +11,7 @@
   <hr>
 </div>-->
 <!-- clients.component.html -->
-
+<!--
 <div class="container mt-5">
   <h2>Clients List</h2>
   <table class="table">
@@ -28,7 +28,7 @@
       <td>{{ client.uuid }}</td>
       <td>{{ client.prenom }}</td>
       <td>{{ client.email }}</td>
-      <!-- Add other client properties as needed -->
+      &lt;!&ndash; Add other client properties as needed &ndash;&gt;
       <td>
         <a [routerLink]="['/edit-client', client.uuid]" class="btn btn-primary btn-sm">Modifier</a>
         <button (click)="deleteClient(client.uuid)" class="btn btn-danger btn-sm ms-1">Supprimer</button>
@@ -36,4 +36,67 @@
     </tr>
     </tbody>
   </table>
+</div>-->
+<div class="card">
+  <div class="card-header d-flex justify-content-between">
+    <span>Liste des Utilisatuers</span>
+  </div>
+  <div class="card-body p-0">
+    <div>
+      <table mat-table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="uuid">
+          <th mat-header-cell *matHeaderCellDef> UUID. </th>
+          <td mat-cell *matCellDef="let element" class="fw-bold"> {{ element.uuid | slice:0:8 }}{{ element.uuid.length > 8 ? '...' : '' }}
+          </td>
+        </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="client">
+          <th mat-header-cell *matHeaderCellDef> Nom </th>
+          <td mat-cell *matCellDef="let element"> {{element.nom }} {{ element.prenom }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Email </th>
+          <td mat-cell *matCellDef="let element"> {{element.email }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="telephone">
+          <th mat-header-cell *matHeaderCellDef> Telephone </th>
+          <td mat-cell *matCellDef="let element"> {{element.telephone}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="adresse">
+          <th mat-header-cell *matHeaderCellDef> Address </th>
+          <td mat-cell *matCellDef="let element"> {{element.adresse}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="cin">
+          <th mat-header-cell *matHeaderCellDef> CIN </th>
+          <td mat-cell *matCellDef="let element"> {{element.cin}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef> Role </th>
+          <td mat-cell *matCellDef="let element"> {{element.role}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let element">
+            <button type="button" (click)="deleteClient(element.uuid)" class="btn btn-outline-danger ms-2" ><i class="fa-regular fa-trash-can"></i></button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                     showFirstLastButtons
+                     aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+  </div>
 </div>
