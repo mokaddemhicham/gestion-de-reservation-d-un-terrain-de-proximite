@@ -31,13 +31,8 @@ public class Service {
     @JsonIgnore
     private List<Terrain> terrains = new ArrayList<>();
 
-    public void addTerrain(Terrain terrain){
-        terrains.add(terrain);
-        terrain.getServices().add(this);
-    }
-
-    public void removeTerrain(Terrain terrain){
-        terrains.remove(terrain);
+    public void removeTerrain(Terrain terrain) {
+        this.terrains.remove(terrain);
         terrain.getServices().remove(this);
     }
 }

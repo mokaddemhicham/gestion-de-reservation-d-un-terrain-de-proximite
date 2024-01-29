@@ -2,17 +2,17 @@
 <app-nav-bar></app-nav-bar>
 <c-carousel>
   <c-carousel-inner>
-    <c-carousel-item *ngFor="let slide of slides">
+    <c-carousel-item>
       <img
-        alt="{{slide.title}}"
+        [alt]="terrain.nom"
         class="carousel-image"
-        loading="lazy"
-        src="{{slide.src}}"
+
+        [src]="'assets/uploads/images/' + terrain.image"
       />
       <div class="carousel-overlay"></div>
       <c-carousel-caption class="d-md-block c-caption">
-        <h3>{{slide.title}}</h3>
-        <p>{{slide.subtitle}}</p>
+        <h3>{{ terrain.nom }}</h3>
+        <p>{{ terrain.addresse }}</p>
       </c-carousel-caption>
     </c-carousel-item>
   </c-carousel-inner>
@@ -99,30 +99,30 @@
           <h2 class="terrain-name">Contact Propriétaire Terrain</h2>
           <div class="terrain-details-content ms-3 mt-3">
             <p class="terrain-description">
-              Rencontrez le propriétaire du terrain, <span class="text-black fw-bold">{{ terrain.proprietaire.nom }} {{ terrain.proprietaire.prenom }}</span>, qui est déterminé à rendre votre expérience aussi agréable que possible.
+              Rencontrez le propriétaire du terrain, <span class="text-black fw-bold">{{ terrain.proprietaire?.nom }} {{ terrain.proprietaire?.prenom }}</span>, qui est déterminé à rendre votre expérience aussi agréable que possible.
               <br>Vous pouvez le contacter directement pour toute question, réservation ou information supplémentaire concernant les terrains.
-              <br><span class="text-black fw-bold">{{ terrain.proprietaire.nom }} {{ terrain.proprietaire.prenom }}</span> est là pour s'assurer que votre visite soit sans tracas et répondre à toutes vos préoccupations.
+              <br><span class="text-black fw-bold">{{ terrain.proprietaire?.nom }} {{ terrain.proprietaire?.prenom }}</span> est là pour s'assurer que votre visite soit sans tracas et répondre à toutes vos préoccupations.
               <br>Découvrez ses coordonnées ci-dessous et n'hésitez pas à le contacter pour profiter pleinement de votre séjour sur nos terrains.
             </p>
             <blockquote class="px-4 py-1">
               <div class="item_info ms-4">
                 <h4 class="info-section-title"><i class="fa-regular fa-user me-2"></i> Nom & Prenom : </h4>
                 <span class="item-value">
-                {{ terrain.proprietaire.nom }} {{ terrain.proprietaire.prenom }}
+                {{ terrain.proprietaire?.nom }} {{ terrain.proprietaire?.prenom }}
               </span>
               </div>
 
               <div class="item_info ms-4 my-2">
                 <h4 class="info-section-title"><i class="fa-regular fa-envelope me-2"></i> Email : </h4>
                 <span class="item-value">
-                <a href="mailto:{{ terrain.proprietaire.email }}" class="ms-2" style="color: #2e934e">{{ terrain.proprietaire.email }}</a>
+                <a href="mailto:{{ terrain.proprietaire?.email }}" class="ms-2" style="color: #2e934e">{{ terrain.proprietaire?.email }}</a>
               </span>
               </div>
 
               <div class="item_info ms-4">
                 <h4 class="info-section-title"><i class="bi bi-telephone me-2"></i> Phone : </h4>
                 <span class="item-value">
-                {{ terrain.proprietaire.telephone }}
+                {{ terrain.proprietaire?.telephone }}
               </span>
               </div>
             </blockquote>
@@ -134,7 +134,7 @@
       <div class="reservation">
         <h3 class="reservation-title mb-4">Reserver Maintenant</h3>
 
-        <form [formGroup]="reservationForm">
+        <form [formGroup]="reservationForm" (submit)="onSubmit()">
 
           <div class="form-group mt-3">
             <mat-form-field class="reservation-date">
@@ -148,13 +148,13 @@
 
 
           </div>
-          <div class="form-group mb-2 mt-3">
+          <div *ngIf="availableHours.length > 0" class="form-group mb-2 mt-3">
             <label for="time-content">Choisissez l'heure du match</label>
             <div class="timeslots mt-3" id="time-content" >
-              <div *ngFor="let e of numbers" class="d-flex">
-                <input type="radio" class="d-none" value="{{e}}" id="time{{e}}"  formControlName="time" (change)="getTime()">
+              <div *ngFor="let e of availableHours; let i = index" class="d-flex">
+                <input type="radio" [disabled]="!isAvailables[i]" class="d-none" value="{{e}}" id="time{{e}}"  formControlName="time" (change)="getTime()" >
 
-                <label class="dp-timepicker-trigger dp-timeslot with-tick" for="time{{e}}">
+                <label (click)="checkCondition($event, !isAvailables[i])" [class.is-booked]="!isAvailables[i]" class="dp-timepicker-trigger dp-timeslot with-tick" for="time{{e}}">
                 <span class="dp-label">
                   <span class="dp-label-time">{{ e }}:00  - <span class="dp-label-end-time dp-success-label">{{ e+1 }}:00 </span></span>
                 </span>
@@ -174,7 +174,7 @@
               <div id="booking_form_total"><span class="currency_amount" ><span class="currency_symbol">MAD</span>{{ terrain.prix }}</span></div>
             </div>
           </div>
-          <button type="submit" class="btn-reservation mt-3">Reserver</button>
+          <button type="submit" [disabled]="reservationForm.invalid" class="btn-reservation mt-3">Reserver</button>
         </form>
 
       </div>

@@ -56,7 +56,7 @@ public class ReservationService {
 
     public Reservation saveReservation(Reservation reservation){
         if (checkReservation(reservation.getTerrain(), reservation.getHeure(), reservation.getDate())){
-            reservation.setEtat("Comfirme");
+            reservation.setEtat("Non payé");
             return reservationRepository.save(reservation);
         }else{
             return null;
@@ -112,4 +112,15 @@ public class ReservationService {
         return dates;
     }
 
+    public Reservation updateReservation(UUID uuid, Paiement paiement) {
+        Optional<Reservation> optionalReservation = reservationRepository.findById(uuid);
+        if (!optionalReservation.isPresent()){
+            return null;
+        }
+        Reservation reservation = optionalReservation.get();
+        reservation.setEtat("Payé");
+        paiement.setReservation(reservation);
+        reservation.setPaiement(paiement);
+        return reservationRepository.save(reservation);
+    }
 }

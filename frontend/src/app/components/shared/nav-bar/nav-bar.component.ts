@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostListener, Renderer2} from '@angular/core';
+import {Component, ElementRef, HostListener} from '@angular/core';
 import {NgClass} from "@angular/common";
 import {RouterLink} from "@angular/router";
 
@@ -51,7 +51,6 @@ export class NavBarComponent {
     if (element) {
 
       if (condition) {
-        console.log(condition);
         element.classList.add(className);
         condition= false;
       } else {

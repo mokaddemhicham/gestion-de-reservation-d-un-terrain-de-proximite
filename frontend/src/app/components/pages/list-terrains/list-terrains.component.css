@@ -98,6 +98,7 @@ a.input_select_sort {
   font-weight: 500;
   box-shadow: none;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .babe_pager .page-numbers.prev, .babe_pager .page-numbers.next {

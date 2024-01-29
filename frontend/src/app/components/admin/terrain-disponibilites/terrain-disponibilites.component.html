@@ -1,1 +1,150 @@
-<p>terrain-disponibilites works!</p>
+<div class="card" xmlns="http://www.w3.org/1999/html">
+  <div class="card-header d-flex justify-content-between">
+    <span>Liste des Disponibilites</span>
+    <button (click)="toggleLiveDemo()" class="btn btn-success">Ajouter une disponibilite</button>
+
+    <c-modal id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+      <c-modal-header>
+        <h5 cModalTitle>Ajouter une disponibilite</h5>
+        <button (click)="toggleLiveDemo()" cButtonClose></button>
+      </c-modal-header>
+      <c-modal-body>
+        <form [formGroup]="addDisponibiliteForm" (ngSubmit)="onSubmit()">
+
+          <div class="row">
+            <div class="col-12">
+              <div class="mb-3">
+                <label class="form-label" for="jour">Jour</label>
+                <select class="form-select" formControlName="jour" id="jour" aria-label="Default select example">
+                  <option selected>Choisir un jour...</option>
+                  <option *ngFor="let day of days" [value]="day.key">{{ day.value }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label" for="heure_debut">Heure Debut</label>
+                <input class="form-control" id="heure_debut" type="number" formControlName="heureDebut">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label" for="heure_fin">Heure Fin</label>
+                <input class="form-control" id="heure_fin" type="number" formControlName="heureFin">
+              </div>
+            </div>
+
+          </div>
+
+          <c-modal-footer>
+            <button (click)="toggleLiveDemo()" cButton color="secondary">
+              Fermer
+            </button>
+            <button type="submit" class="btn btn-primary" [disabled]="addDisponibiliteForm.invalid">Ajouter</button>
+          </c-modal-footer>
+        </form>
+      </c-modal-body>
+    </c-modal>
+
+
+  </div>
+  <div class="card-body p-0">
+    <div>
+      <table mat-table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="uuid">
+          <th mat-header-cell *matHeaderCellDef> UUID. </th>
+          <td mat-cell *matCellDef="let element" class="fw-bold"> {{ element.uuid }}
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="jour">
+          <th mat-header-cell *matHeaderCellDef> Jour </th>
+          <td mat-cell *matCellDef="let element">{{ element.jour }}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="heureDebut">
+          <th mat-header-cell *matHeaderCellDef> Heure Début </th>
+          <td mat-cell *matCellDef="let element"> {{element.heureDebut}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="heureFin">
+          <th mat-header-cell *matHeaderCellDef> Heure Fin </th>
+          <td mat-cell *matCellDef="let element"> {{element.heureFin}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let element; let i = index">
+            <button (click)="toggleModal(i); fillEditForm(element)" class="btn btn-outline-success me-2" >
+              <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+
+            <c-modal id="liveDemoModal{{ i }}" [visible]="modalVisibility[i]" (visibleChange)="handleModalChange($event, i)">
+              <c-modal-header>
+                <h5 cModalTitle>Modifier une disponibilité</h5>
+                <button (click)="toggleModal(i)" cButtonClose></button>
+              </c-modal-header>
+              <c-modal-body>
+                <form [formGroup]="editDisponibiliteForm" (ngSubmit)="onEdit()">
+
+                  <input type="hidden" formControlName="edit_uuid" >
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="mb-3">
+                        <label class="form-label" for="edit_jour_{{element.uuid}}">Jour</label>
+                        <input type="text" class="form-control" readonly id="edit_jour_{{element.uuid}}" formControlName="edit_jour">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label class="form-label" for="edit_heure_debut_{{element.uuid}}">Heure Début</label>
+                        <input class="form-control"  id="edit_heure_debut_{{element.uuid}}" type="number" formControlName="edit_heureDebut">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label class="form-label" for="edit_heure_fin_{{element.uuid}}">Heure Fin</label>
+                        <input class="form-control" id="edit_heure_fin_{{element.uuid}}" type="number" formControlName="edit_heureFin">
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <c-modal-footer>
+                    <button (click)="toggleModal(i)" cButton color="secondary">
+                      Fermer
+                    </button>
+                    <button type="submit" class="btn btn-primary" [disabled]="editDisponibiliteForm.invalid">Modifier</button>
+                  </c-modal-footer>
+                </form>
+              </c-modal-body>
+            </c-modal>
+            <button type="button" (click)="delete(element.uuid)" class="btn btn-outline-danger" >
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                     showFirstLastButtons
+                     aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

@@ -5,36 +5,38 @@
 <div class="checkout-wrapper container">
   <div class="checkout-inner row">
     <div id="checkout_form_block" class="checkout-list-item col-lg-8 col-md-12">
-      <h2 class="checkout-title list-order">Order #2514759012</h2>
-      <table class="table_order_items_details"><tbody><tr><td class="order_item_row_image"><a target="_blank" href="https://demo2.prestabrain.com/followme/to_book/discovery-islands-kayaking-tour/"><img src="https://demo2.prestabrain.com/followme/wp-content/uploads/2020/11/5c50ac0708cc654bf60a5e7b_discovery-islands-176-kayaking-copy-150x150.jpg"></a></td><td class="order_item_row_details order_item_row_main_details">
+      <h2 class="checkout-title list-order">Order #{{ reservation.uuid  | slice:24: 36 }}</h2>
+      <table class="table_order_items_details"><tbody><tr><td class="order_item_row_image">
+        <a target="_blank" [routerLink]="['/terrains', reservation.terrain?.uuid]">
+        <img [src]="'assets/uploads/images/' + reservation.terrain?.image" [alt]="reservation.terrain?.nom">
+        </a>
+      </td><td class="order_item_row_details order_item_row_main_details">
         <table class="table_order_item_row_details"><tbody>
         <tr><td class="order_item_info order_item_info_title">
-          <a target="_blank" href="https://demo2.prestabrain.com/followme/to_book/discovery-islands-kayaking-tour/">Discovery Islands Kayaking Tour</a>
+          <a target="_blank" [routerLink]="['/terrains', reservation.terrain?.uuid]">{{ reservation.terrain?.nom }}</a>
         </td></tr><tr><td class="order_item_info order_item_info_dates">
           <span class="order_item_td_label">Date:</span>
-          <span class="order_item_td_value">01/04/2024</span><span class="order_item_td_label">Time:</span>
-          <span class="order_item_td_value">10:00 am</span>
+          <span class="order_item_td_value">{{ reservation.date }}</span><span class="order_item_td_label">Time:</span>
+          <span class="order_item_td_value">{{ reservation.heure }}:00</span>
         </td></tr>
         <tr><td class="order_item_info order_item_info_duration">
           <span class="order_item_td_label">Duration:</span>
-          <span class="order_item_td_value">6 days</span>
+          <span class="order_item_td_value">1 Heure</span>
         </td></tr>
         <tr><td class="order_item_info order_item_info_guests">
-          <span class="order_item_td_label">Tickets:</span>
-          <span class="order_item_td_value"><table class="order_item_age_prices"><tbody>
-        <tr>
-          <td class="order_item_age_title">Adult</td>
-          <td class="order_item_age_guests"><span class="order_item_age_guests_num">x1=</span></td>
-          <td><span class="order_item_age_price"><span class="currency_amount" data-amount="110"><span class="currency_symbol">$</span>110.00</span></span></td>
-        </tr>
-          </tbody>
-          </table>
-        </span>
+          <span class="order_item_td_label">Etat:</span>
+          <span class="order_item_td_value d-inline-block badge text-bg-warning">
+            {{ reservation.etat }}
+          </span>
+        </td></tr>
+        <tr><td class="order_item_info order_item_info_duration">
+          <span class="order_item_td_label">Identifiant Ticket:</span>
+          <span class="order_item_td_value">{{ reservation.uuid }}</span>
         </td></tr>
         </tbody></table>
       </td><td class="order_item_row_price">
         <table class="table_order_item_total_price"><tbody>
-        <tr><td class="order_item_total_price"><span class="currency_amount" data-amount="110"><span class="currency_symbol">$</span>110.00</span>
+        <tr><td class="order_item_total_price"><span class="currency_amount">{{ reservation.terrain?.prix }} <span class="currency_symbol">Dhs</span></span>
         </td></tr>
         </tbody></table>
       </td></tr>
@@ -43,48 +45,72 @@
           <span class="order_items_row_total_label">Subtotal:</span>
         </td>
         <td class="order_items_row_total_amount order_items_row_subtotal">
-          <span id="order_items_row_subtotal_amount"><span class="currency_amount" data-amount="110"><span class="currency_symbol">$</span>110.00</span></span>
+          <span id="order_items_row_subtotal_amount"><span class="currency_amount"><span class="currency_symbol">{{ reservation.terrain?.prix }}</span> Dhs</span></span>
         </td></tr>
       <tr><td class="order_items_row_total" colspan="2">
         <span class="order_items_row_total_label">Total:</span>
       </td>
         <td class="order_items_row_total_amount">
-          <span id="order_items_row_total_amount"><span class="currency_amount" data-amount="110"><span class="currency_symbol">$</span>110.00</span></span>
+          <span id="order_items_row_total_amount"><span class="currency_amount"><span class="currency_symbol">{{ reservation.terrain?.prix }}</span> Dhs</span></span>
         </td></tr>
       <tr><td class="order_items_row_total order_items_row_paid" colspan="2">
         <span class="order_items_row_total_label">Amount Paid:</span>
       </td>
         <td class="order_items_row_total_amount order_items_row_paid">
-          <span><span class="currency_amount" data-amount="0"><span class="currency_symbol">$</span>0.00</span></span>
+          <span><span class="currency_amount"><span class="currency_symbol">0.00</span> Dhs</span></span>
         </td></tr>
       <tr><td class="order_items_row_total order_items_row_due" colspan="2">
         <span class="order_items_row_total_label">Amount Due:</span>
       </td>
         <td class="order_items_row_total_amount order_items_row_due">
-          <span><span class="currency_amount"><span class="currency_symbol">$</span>110.00</span></span>
+          <span><span class="currency_amount"><span class="currency_symbol">{{ reservation.terrain?.prix }}</span> Dhs</span></span>
         </td></tr></tbody></table> </div>
 
     <div class="checkout-info col-lg-4 col-md-12">
       <h2 class="checkout-title">Paiement</h2>
-      <form id="checkout_form" name="checkout_form" method="post" action="" >
+      <form id="checkout_form" name="checkout_form" [formGroup]="paiementForm" (submit)="onSubmit()">
         <div class="contact_fields_group input_group">
           <div class="checkout-form-block">
             <div class="checkout_form_input_field ">
-              <input type="text" class="checkout_input_field checkout_input_required" name="titulaireCarte" id="titulaireCarte" value="" placeholder="Nom titulaire carte" required="required">
+              <input type="text" class="checkout_input_field checkout_input_required" formControlName="titulaireCarte" id="titulaireCarte" placeholder="Nom titulaire carte">
             </div>
           </div>
           <div class="checkout-form-block">
             <div class="checkout_form_input_field ">
-              <input type="text" class="checkout_input_field checkout_input_required" name="numeroCarte" id="numeroCarte" value="" placeholder="Numero du carte" required="required">
+              <input type="text" class="checkout_input_field checkout_input_required" formControlName="numeroCarte"  id="numeroCarte" value="" placeholder="Numero du carte">
             </div>
           </div>
           <div class="checkout-form-block row">
             <div class="checkout_form_input_field col-md-6 ">
-              <input type="text" class="checkout_input_field checkout_input_required" name="dateExpiration" id="dateExpiration" value="" placeholder="MM/YY" required="required">
+              <input type="text" class="checkout_input_field checkout_input_required" formControlName="dateExpiration" id="dateExpiration" placeholder="MM/YY">
             </div>
             <div class="checkout_form_input_field col-md-6">
-              <input type="text" class="checkout_input_field checkout_input_required" name="cvv" id="cvv" value="" placeholder="CVV" required="required">
+              <input type="text" class="checkout_input_field checkout_input_required" formControlName="codeVerification" id="cvv" placeholder="CVV">
             </div>
+          </div>
+
+          <div class="checkout-form-block">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="typeCarte" formControlName="typeCarte" id="visaRadio" value="visa">
+              <label class="form-check-label" for="visaRadio">
+                <i class="fa-brands fa-cc-visa"></i> Visa
+              </label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="typeCarte" formControlName="typeCarte" id="mastercardRadio" value="mastercard">
+              <label class="form-check-label" for="mastercardRadio">
+                <i class="fa-brands fa-cc-mastercard"></i> Mastercard
+              </label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="typeCarte" formControlName="typeCarte" id="amexRadio" value="amex">
+              <label class="form-check-label" for="amexRadio">
+                <i class="fa-brands fa-cc-amex"></i> Amex
+              </label>
+            </div>
+
           </div>
         </div>
         <div class="amount_group">
@@ -92,8 +118,8 @@
           <div class="checkout_form_pay_total">
             <div class="input-cicrle">
               <span class="currency_amount fw-bold">
-                <span class="currency_symbol">$</span>
-                110.00
+                <span class="currency_symbol">{{ reservation.terrain?.prix }}</span>
+                Dhs
               </span>&nbsp;
             </div>
           </div>
@@ -102,7 +128,7 @@
         <div class="terms_group">
           <div class="checkout_form_terms_check">
             <div class="input-square">
-              <input type="checkbox" name="payment[terms_check]" id="order_terms_check" value="agree" required="required">
+              <input type="checkbox" formControlName="terms" id="order_terms_check" value="agree" required="required">
               <label for="order_terms_check">&nbsp; I read and agree to the terms &amp; conditions</label>
             </div>
           </div>
@@ -112,7 +138,7 @@
         </div>
 
         <div class="submit_group">
-          <button class="btn button checkout_form_submit">Complete My Order</button>
+          <button class="btn button checkout_form_submit" [disabled]="paiementForm.invalid">Complete My Order</button>
         </div>
       </form>
     </div>

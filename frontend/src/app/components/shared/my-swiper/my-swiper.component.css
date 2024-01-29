@@ -1,4 +1,5 @@
-/* swiper.component.css */
+/*
+!* swiper.component.css *!
 .swiper-container {
   width: 100%;
   max-width: 1300px;
@@ -21,5 +22,46 @@
     background-position: 50%;
     background-size: cover;
     object-fit: cover;
+  }
+}
+*/
+@keyframes zoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.5);
+  }
+}
+
+
+.swiper-container {
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  margin: 40px auto;
+
+  .swiper-wrapper {
+
+    .swiper-slide {
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .swiper-slide-prev,
+    .swiper-slide-active,
+    .swiper-slide-duplicate-active {
+
+      img {
+        animation-name: zoom;
+        animation-duration: 4s;
+        animation-fill-mode: forwards;
+      }
+    }
   }
 }

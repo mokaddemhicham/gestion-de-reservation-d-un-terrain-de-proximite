@@ -25,7 +25,7 @@ public class ClientController {
     }
 
     @GetMapping(path = "/{uuid}")
-    public Optional<Client> getClient(@PathVariable UUID uuid){
+    public Client getClient(@PathVariable UUID uuid){
         return clientService.getClient(uuid);
     }
 

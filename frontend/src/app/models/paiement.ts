@@ -3,8 +3,7 @@ import {Reservation} from "./reservation";
 export interface Paiement {
   uuid: string;
   montant: number;
-  date?: Date;
-  type?: string;
+  datePaiement?: Date;
   numeroCarte?: string;
   dateExpiration?: string;
   codeVerification?: string;

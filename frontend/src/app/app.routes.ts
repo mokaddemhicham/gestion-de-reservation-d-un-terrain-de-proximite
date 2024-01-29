@@ -17,8 +17,9 @@ import {EditClientComponent} from "./components/shared/edit-client/edit-client.c
 import {SigninComponent} from "./components/shared/signin/signin.component";
 import {AdminAuthGuard} from "./guards/auth.guard";
 import {ReservationComponent} from "./components/shared/reservation/reservation.component";
+import {HomeComponent} from "./components/pages/home/home.component";
 export const routes: Routes = [
-  {path: '', redirectTo: 'terrains', pathMatch: 'full'},
+  {path: '', component: HomeComponent, pathMatch: 'full'},
   {path : 'terrains', 'component': ListTerrainsComponent, pathMatch: 'full'},
   {path : 'terrains/:uuid', 'component': TerrainDetailsComponent, pathMatch: 'full'},
   {path : 'clients', 'component': ClientsComponent, pathMatch: 'full', canActivate: [AdminAuthGuard]},

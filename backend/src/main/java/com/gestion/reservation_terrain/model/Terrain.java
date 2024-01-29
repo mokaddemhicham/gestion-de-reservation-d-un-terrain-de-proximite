@@ -14,7 +14,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "terrain")
 @DynamicUpdate
-@ToString
 public class Terrain {
 
     @Id
@@ -71,14 +70,26 @@ public class Terrain {
     private ProprietaireTerrain proprietaire;
 
     // Méthode pour ajouter un service au terrain
-    public void addService(Service service) {
-        services.add(service);
-        service.getTerrains().add(this);
+    public void addServices(List<Service> services) {
+        this.services.addAll(services);
+        for(Service service: services){
+            service.getTerrains().add(this);
+        }
     }
 
     // Méthode pour supprimer un service du terrain
     public void removeService(Service service) {
         services.remove(service);
         service.getTerrains().remove(this);
+    }
+
+    public void addDisponibilite(Disponibilite disponibilite){
+        this.disponibilites.add(disponibilite);
+        disponibilite.getTerrains().add(this);
+    }
+
+    public void removeDisponibilite(Disponibilite disponibilite) {
+        disponibilites.remove(disponibilite);
+        disponibilite.getTerrains().remove(this);
     }
 }

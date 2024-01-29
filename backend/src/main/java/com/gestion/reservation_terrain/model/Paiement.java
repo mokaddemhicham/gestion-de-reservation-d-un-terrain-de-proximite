@@ -17,7 +17,7 @@ public class Paiement {
     private Float montant;
     private Date datePaiement;
     private String numeroCarte;
-    private Date dateExpiration;
+    private String dateExpiration;
     private String codeVerification;
     private String titulaireCarte;
     private String typeCarte;

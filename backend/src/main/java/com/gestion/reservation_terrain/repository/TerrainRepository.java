@@ -3,6 +3,8 @@ package com.gestion.reservation_terrain.repository;
 import com.gestion.reservation_terrain.model.Disponibilite;
 import com.gestion.reservation_terrain.model.Service;
 import com.gestion.reservation_terrain.model.Terrain;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -28,5 +30,8 @@ public interface TerrainRepository extends JpaRepository<Terrain, UUID> {
 
     @Query("select t.disponibilites from Terrain t where t.uuid = :uuid")
     public Iterable<Disponibilite> findAllDisponibilitesByTerrainUuid(@Param("uuid") UUID uuid);
+
+    @Query(value = "select *  from terrain", nativeQuery = true)
+    public Page<Terrain> findAllTerrains(Pageable pageable);
 
 }

@@ -1,25 +1,31 @@
 import {Component, OnInit} from '@angular/core';
-import {CurrencyPipe, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {CurrencyPipe, formatDate, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {
   CarouselCaptionComponent,
   CarouselComponent,
-  CarouselControlComponent, CarouselIndicatorsComponent,
+  CarouselControlComponent,
+  CarouselIndicatorsComponent,
   CarouselInnerComponent,
-  CarouselItemComponent, NavComponent, NavLinkDirective, TabContentComponent, TabContentRefDirective, TabPaneComponent
+  CarouselItemComponent,
+  NavComponent,
+  NavLinkDirective,
+  TabContentComponent,
+  TabContentRefDirective,
+  TabPaneComponent
 } from "@coreui/angular";
 import {Terrain} from "../../../models/terrain";
-import {Disponibilite} from "../../../models/disponibilite";
-import {Service} from "../../../models/service";
-import {ProprietaireTerrain} from "../../../models/proprietaire-terrain";
-import {RouterLink} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {MatInputModule} from "@angular/material/input";
 import {DateFilterFn, MatDatepickerInputEvent, MatDatepickerModule} from "@angular/material/datepicker";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatNativeDateModule} from "@angular/material/core";
-import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NavBarComponent} from "../../shared/nav-bar/nav-bar.component";
 import {InfoTabComponent} from "../../shared/info-tab/info-tab.component";
 import {FooterComponent} from "../../shared/footer/footer.component";
+import {TerrainService} from "../../../services/terrain/terrain.service";
+import {Reservation} from "../../../models/reservation";
+import {ReservationDto} from "../../../models/reservationDto";
 
 @Component({
   selector: 'app-terrain',
@@ -54,159 +60,41 @@ import {FooterComponent} from "../../shared/footer/footer.component";
   styleUrl: './terrain-details.component.css'
 })
 export class TerrainDetailsComponent implements OnInit{
-  terrain!: Terrain;
-  slides: any[] = new Array(3).fill({id: -1, src: '', title: '', subtitle: ''});
+  terrain: Terrain = {} as Terrain;
+  terrainUuid!: string;
+  slides: any[] = new Array(1).fill({id: -1, src: '', title: '', subtitle: ''});
   reservationForm!: FormGroup;
   availableHours: number[] = [];
-  numbers : number[] = [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
-  constructor(private fb: FormBuilder) { }
+  isAvailables: boolean[] = [];
+  constructor(private fb: FormBuilder, private terrainService: TerrainService, private route: ActivatedRoute,
+              private router: Router) { }
+
 
   ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.terrainUuid = params['uuid'];
+      this.fetchData(this.terrainUuid);
+    });
 
     this.reservationForm = this.fb.group(
       {
-        selectedDate: new FormControl(null),
-        time : new FormControl(null)
+        selectedDate: new FormControl(null, Validators.required),
+        time : new FormControl(null, Validators.required)
       }
     )
-
-    this.slides[0] = {
-      id: 0,
-      src: './assets/images/stadium_1.jpg',
-      title: 'Havre de Paix',
-      subtitle: 'Nulla vitae elit libero, a pharetra augue mollis interdum.'
-    };
-    this.slides[1] = {
-      id: 1,
-      src: './assets/images/stadium_2.jpg',
-      title: 'Havre de Paix',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    }
-    this.slides[2] = {
-      id: 2,
-      src: './assets/images/stadium_3.jpg',
-      title: 'Havre de Paix',
-      subtitle: 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
-    };
-
-    const fakeProprietaire: ProprietaireTerrain = {
-      uuid: '1',
-      nom: 'Mokaddem',
-      prenom: 'Hicham',
-      email: 'contact@mokaddemhicham.tech',
-      password: 'password123',
-      telephone: '+212 697 332 933',
-      adresse: '123 Main St',
-      cin: 'AB123456',
-      role: 'proprietaire',
-      terrains: [], // Leave it empty for now
-    };
-
-// Generate fake data for Service
-    const fakeService: Service[] = [
-      {
-        uuid: '1',
-        libelle: 'Douche',
-        icon: 'fa-solid fa-shower',
-        terrains: [], // Laissez-le vide pour le moment
-      },
-      {
-        uuid: '2',
-        libelle: 'Cafeteria',
-        icon: 'bi bi-cup-hot',
-        terrains: [],
-      },
-      {
-        uuid: '3',
-        libelle: 'Wi-Fi',
-        icon: 'bi bi-wifi',
-        terrains: [],
-      },
-      {
-        uuid: '4',
-        libelle: 'Parking',
-        icon: 'bi bi-p-circle',
-        terrains: [],
-      },
-      {
-        uuid: '5',
-        libelle: 'Éclairage',
-        icon: 'bi bi-lightbulb',
-        terrains: [],
-      },
-    ];
-
-// Generate fake data for Disponibilite
-    const fakeDisponibilite: Disponibilite[] = [
-      {
-        uuid: '1',
-        jour: 'Lundi',
-        heureDebut: 14,
-        heureFin: 16,
-        terrain: [], // Laissez-le vide pour le moment
-      },
-      {
-        uuid: '2',
-        jour: 'Mardi',
-        heureDebut: 10,
-        heureFin: 12,
-        terrain: [],
-      },
-      {
-        uuid: '3',
-        jour: 'Mercredi',
-        heureDebut: 16,
-        heureFin: 18,
-        terrain: [],
-      },
-      {
-        uuid: '4',
-        jour: 'Jeudi',
-        heureDebut: 12,
-        heureFin: 14,
-        terrain: [],
-      },
-      {
-        uuid: '5',
-        jour: 'Vendredi',
-        heureDebut: 8,
-        heureFin: 10,
-        terrain: [],
-      },
-      {
-        uuid: '6',
-        jour: 'Samedi',
-        heureDebut: 18,
-        heureFin: 20,
-        terrain: [],
-      },
-      {
-        uuid: '7',
-        jour: 'Dimanche',
-        heureDebut: 20,
-        heureFin: 22,
-        terrain: [],
-      },
-    ];
-
-// Generate fake data for Terrain
-    this.terrain = {
-      uuid: '54a9f5d6-54f1-45c7-9542-4b5c54a9f4a5',
-      nom: 'Havre de Paix',
-      description: 'Terrain constructible de 5000 m², situé dans un quartier calme et verdoyant de Salé. Vue imprenable sur la mer et les montagnes. Idéal pour une maison familiale ou une retraite paisible.',
-      image: 'assets/images/stadium_1.jpg',
-      prix: 50,
-      taille: '10x10',
-      addresse: '123 Chemin des Lilas, Salé',
-      localisation: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3397.238595280296!2d-8.052004925638188!3d31.627317041852702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafe9f0ca6b3a9f%3A0x8eb4b9f17c64224a!2z2YXZhNin2LnYqCDYp9mE2YLYsdioINij2LLZhNmK!5e0!3m2!1sfr!2sma!4v1704115134685!5m2!1sfr!2sma',
-      type: 'Terrain constructible',
-      proprietaire: fakeProprietaire,
-      services: fakeService,
-      disponibilites: fakeDisponibilite,
-      reservations: [], // Leave it empty for now
-    };
-
   }
+
+  fetchData(uuid: string){
+    this.terrainService.getTerrain(uuid).subscribe({
+      next: res =>{
+        this.terrain = res;
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
+  }
+
 
   dateFilter : DateFilterFn<Date | null> = (date: Date | null) => {
     return this.isEnabledDate(date || new Date());
@@ -245,21 +133,54 @@ export class TerrainDetailsComponent implements OnInit{
   }
 
   onDateChange(event: MatDatepickerInputEvent<Date>) {
-    const selectedDate = event.value;
-    console.log('Selected date:', selectedDate);
-    this.availableHours = this.generateAvailableHours(selectedDate || new Date());
-  }
-
-  private generateAvailableHours(date: Date): number[] {
-    // Add your logic to determine available hours based on the selected date
-    // For simplicity, this example returns hours from 8 to 23
-    const startHour = 8;
-    const endHour = 23;
-    return Array.from({ length: endHour - startHour + 1 }, (_, index) => startHour + index);
+    const selectedDate = event.value || new Date();
+    const formattedDate = this.formatDate(selectedDate)
+    console.log(formattedDate)
+    this.terrainService.getHeuresAvailables(formattedDate, this.terrainUuid).subscribe({
+      next: res =>{
+        this.availableHours = Object.keys(res).map(key => parseInt(key, 10));
+        this.isAvailables = Object.values(res)
+        selectedDate.setDate(selectedDate.getDate()-1)
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
   }
 
   getTime() {
     console.log(this.reservationForm.get('time')?.value);
+  }
+
+
+  checkCondition(event: MouseEvent, isAvailable: boolean) {
+    if (isAvailable) {
+      event.preventDefault(); // Prevent the default action (i.e., checking the radio input)
+    }
+  }
+
+  formatDate(date: Date): string{
+    date.setDate(date.getDate()+1)
+    return date.toISOString().slice(0, 10); // Extract the date part in the format 'YYYY-MM-DD'
+  }
+
+  onSubmit(){
+    let reservation : ReservationDto = {} as ReservationDto;
+    reservation.date = this.reservationForm.value.selectedDate
+    console.log(reservation.date.getDate()-1)
+    reservation.heure = parseInt(this.reservationForm.value.time)
+    reservation.user = "02ba7822-aac1-4ca2-979b-4ca5623ae014"
+    reservation.terrain = this.terrainUuid
+    this.terrainService.addReservation(reservation).subscribe({
+      next: res =>{
+        console.log(res)
+        this.reservationForm.reset({})
+        this.router.navigate(['reservation/checkout', res.uuid])
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
   }
 
 }

@@ -1,9 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableDataSource, MatTableModule} from "@angular/material/table";
-import {NgOptimizedImage, SlicePipe} from "@angular/common";
+import {NgForOf, NgOptimizedImage, SlicePipe} from "@angular/common";
 import {ActivatedRoute, RouterLink} from "@angular/router";
-import {Terrain} from "../../../models/terrain";
 import {TerrainService} from "../../../services/terrain/terrain.service";
 import Swal from "sweetalert2";
 import {Service} from "../../../models/service";
@@ -16,6 +15,7 @@ import {
 } from "@coreui/angular";
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {TerrainDto} from "../../../models/terrainDto";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-terrain-services',
@@ -33,7 +33,8 @@ import {TerrainDto} from "../../../models/terrainDto";
     ButtonCloseDirective,
     ButtonDirective,
     ReactiveFormsModule,
-    ModalTitleDirective
+    ModalTitleDirective,
+    NgForOf
   ],
   templateUrl: './terrain-services.component.html',
   styleUrl: './terrain-services.component.css'
@@ -41,16 +42,16 @@ import {TerrainDto} from "../../../models/terrainDto";
 export class TerrainServicesComponent implements OnInit{
   displayedColumns: string[] = ['uuid', 'icon', 'libelle', 'actions'];
   services: Service[] = []
+  allServices: Service[] = []
   dataSource = new MatTableDataSource<Service>(this.services);
   public visible: boolean = false;
   addServiceForm!: FormGroup;
   terrainUuid!: string
+  service: Service = {} as Service;
 
-  constructor(private terrainService: TerrainService, private route: ActivatedRoute, private fb: FormBuilder) {
-    this.addServiceForm = this.fb.group({
-      icon: new FormControl('', [Validators.required]),
-      libelle: new FormControl('', [Validators.required]),
-    })
+  constructor(private terrainService: TerrainService, private route: ActivatedRoute, private fb: FormBuilder,
+              private toastr: ToastrService) {
+    this.initForm()
   }
 
   toggleLiveDemo() {
@@ -61,37 +62,38 @@ export class TerrainServicesComponent implements OnInit{
     this.visible = event;
   }
 
-  delete(uuid: string){
-    // Swal.fire({
-    //   title: "Êtes-vous sûr ?",
-    //   text: "Vous ne pourrez pas revenir en arrière !",
-    //   icon: "warning",
-    //   showCancelButton: true,
-    //   confirmButtonColor: "#3085d6",
-    //   cancelButtonColor: "#d33",
-    //   confirmButtonText: "Oui, supprimez-le !",
-    //   cancelButtonText: "Annuler"
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     this.terrainService.deleteService(uuid).subscribe({
-    //       next: res =>{
-    //         Swal.fire({
-    //           title: "Supprimé !",
-    //           text: "Le terrain a été supprimé.",
-    //           icon: "success"
-    //         });
-    //         this.fetchData()
-    //       },
-    //       error: err => {
-    //         Swal.fire({
-    //           title: "Non supprimé !",
-    //           text: "Le terrain n'a pas été supprimé.",
-    //           icon: "error"
-    //         });
-    //       }
-    //     })
-    //   }
-    // });
+  delete(serviceUuid: string){
+    Swal.fire({
+      title: "Êtes-vous sûr ?",
+      text: "Vous ne pourrez pas revenir en arrière !",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Oui, supprimez-le !",
+      cancelButtonText: "Annuler"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.terrainService.deleteService(serviceUuid, this.terrainUuid).subscribe({
+          next: res =>{
+            Swal.fire({
+              title: "Supprimé !",
+              text: "Le service a été supprimé.",
+              icon: "success"
+            });
+            this.fetchData(this.terrainUuid)
+            this.getAllServicesNotSelected()
+          },
+          error: err => {
+            Swal.fire({
+              title: "Non supprimé !",
+              text: "Le service n'a pas été supprimé.",
+              icon: "error"
+            });
+          }
+        })
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -99,6 +101,21 @@ export class TerrainServicesComponent implements OnInit{
       next: params =>{
         this.terrainUuid = params['terrainUuid']
         this.fetchData(this.terrainUuid)
+      }
+    })
+
+    this.getAllServicesNotSelected()
+
+
+  }
+
+  getAllServicesNotSelected(){
+    this.terrainService.getAllServices(this.terrainUuid).subscribe({
+      next: res => {
+        this.allServices = res
+      },
+      error: err => {
+        this.showError(err.toString())
       }
     })
   }
@@ -111,21 +128,43 @@ export class TerrainServicesComponent implements OnInit{
         this.dataSource.paginator = this.paginator;
       },
       error: (err) => {
-        console.log(err)
+        this.showError(err.toString())
       }
     })
   }
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   onSubmit() {
-    let service : Service = this.addServiceForm.value;
-    this.terrainService.addService(this.terrainUuid, service).subscribe({
+    let selectedServices : string[] = this.addServiceForm.value.services
+    let services : Service[] = this.allServices.filter(service => {
+      return selectedServices.includes(<string>service.uuid)
+    });
+
+    this.terrainService.addServices(this.terrainUuid, services).subscribe({
       next: res =>{
-        console.log("Res : " + res)
+        this.showSuccess("Les services ont été ajoutés avec succès !")
+        this.addServiceForm.reset({})
+        this.toggleLiveDemo()
+        this.fetchData(this.terrainUuid)
+        this.getAllServicesNotSelected()
       },
       error: err =>{
-        console.log(err)
+        this.showError(err.toString())
       }
+    })
+  }
+
+  showSuccess(message: string) {
+    this.toastr.success(message);
+  }
+
+  showError(message: string) {
+    this.toastr.error(message);
+  }
+
+  private initForm() {
+    this.addServiceForm = this.fb.group({
+      services: new FormControl([], [Validators.required])
     })
   }
 }

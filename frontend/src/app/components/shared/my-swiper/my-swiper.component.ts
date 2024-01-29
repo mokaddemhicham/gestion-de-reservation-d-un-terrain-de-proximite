@@ -22,13 +22,14 @@ export class MySwiperComponent implements OnInit, AfterViewInit{
     var mySwiper = new Swiper('.swiper-container', {
       loop: true,
       autoplay: {
-          delay: 4000,
+        delay: 4000,
       },
       speed: 2000,
       effect: 'fade',
       fadeEffect: {
         crossFade: true
       },
+
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',

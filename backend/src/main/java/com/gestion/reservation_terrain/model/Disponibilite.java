@@ -37,4 +37,9 @@ public class Disponibilite {
     @JsonIgnore
     private List<Terrain> terrains = new ArrayList<>();
 
+    public void addTerrain(Terrain terrain) {
+        this.terrains.add(terrain);
+        terrain.getDisponibilites().add(this);
+    }
+
 }

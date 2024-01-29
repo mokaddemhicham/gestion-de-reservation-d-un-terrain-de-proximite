@@ -19,8 +19,12 @@ public class ClientService {
         return clientRepository.findAll();
     }
 
-    public Optional<Client> getClient(UUID uuid){
-        return clientRepository.findById(uuid);
+    public Client getClient(UUID uuid){
+        if (clientRepository.findById(uuid).isPresent()){
+            return clientRepository.findById(uuid).get();
+        }else{
+            return null;
+        }
     }
 
     public Client saveClient(Client client){

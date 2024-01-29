@@ -1,11 +1,11 @@
 <div class="terrain-card">
   <div class="item_img">
-    <a class="item-thumb" href="..">
-      <img decoding="async" src="{{ terrain.image }}" alt="Stadium">
+    <a class="item-thumb" [routerLink]="['/terrain', terrain.uuid]">
+      <img decoding="async" src="assets/uploads/images/{{ terrain.image }}" alt="{{ terrain.name }}">
     </a>
     <div class="item_content">
       <div class="item_info_price">
-        <span class="currency_amount" data-amount="114"><span class="currency_symbol"></span>{{ terrain.price }}</span> </div>
+        <span class="currency_amount" data-amount="114"><span class="currency_symbol"></span>{{ terrain.prix }} Dhs</span></div>
       <div class="rating">
         <i class="bi bi-emoji-smile"></i>
         <span class="rating-score">4</span>
@@ -16,7 +16,7 @@
 
   <div class="item_text">
     <div class="item_title">
-      <a href="..">{{ terrain.name }}</a>
+      <a [routerLink]="['/terrain', terrain.uuid]">{{ terrain.nom }}</a>
     </div>
     <div class="item-meta">
       <span class="item-user item-meta-value">
@@ -31,9 +31,9 @@
 
       <div class="item-location">
         <i class="bi bi-geo-alt-fill"></i>
-        <span>{{ terrain.location }}</span>
+        <span>{{ terrain.addresse }}</span>
       </div>
     </div>
-    <a class="read-more-item" [routerLink]="['/terrain', terrain.id]">Book Now <i class="bi bi-caret-right-fill"></i></a>
+    <a class="read-more-item" [routerLink]="['/terrain', terrain.uuid]">Book Now <i class="bi bi-caret-right-fill"></i></a>
   </div>
 </div>

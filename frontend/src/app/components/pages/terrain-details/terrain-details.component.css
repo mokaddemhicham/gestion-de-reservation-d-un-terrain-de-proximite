@@ -207,6 +207,14 @@
   border-color: var(--primary_hover);
 }
 
+.btn-reservation:disabled {
+  background-color: var(--lighterer);
+  border-color: var(--lighterer);
+  color: #fff;
+  cursor: not-allowed;
+}
+
+
 .terrain-name{
   color: var(--accent);
   font-size: 30px;
@@ -363,6 +371,10 @@ blockquote:before {
   background-color: #e6e9ef;
   margin: 0;
   cursor: not-allowed;
+}
+
+.dp-timeslot.is-booked .dp-label, .dp-timeslot.is-booked:before, .dp-timeslot.is-booked:hover, .dp-timeslot.is-off .dp-label, .dp-timeslot.is-off:before {
+  background-color: #e42806;
 }
 
 .dp-timeslot:hover {

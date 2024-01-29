@@ -1,11 +1,11 @@
 <div class="card" xmlns="http://www.w3.org/1999/html">
   <div class="card-header d-flex justify-content-between">
     <span>Liste des Services</span>
-    <button (click)="toggleLiveDemo()" class="btn btn-success">Ajouter un Service</button>
+    <button (click)="toggleLiveDemo()" class="btn btn-success">Selectionnez vos services</button>
 
     <c-modal id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
       <c-modal-header>
-        <h5 cModalTitle>Ajouter un service</h5>
+        <h5 cModalTitle>Selectionnez vos services</h5>
         <button (click)="toggleLiveDemo()" cButtonClose></button>
       </c-modal-header>
       <c-modal-body>
@@ -13,17 +13,14 @@
           <div class="row">
             <div class="col-12">
               <div class="mb-3">
-                <label class="form-label" for="icon">Icon</label>
-                <input class="form-control" id="icon" type="text" formControlName="icon">
+<!--                <label class="form-label" for="libelles">Se</label>-->
+                <select class="form-select h-25" formControlName="services" id="libelles" multiple aria-label="Multiple select example">
+                  <option selected>Selectionnez vos services</option>
+                  <option *ngFor="let service of allServices" [value]="service.uuid">{{ service.libelle }}</option>
+                </select>
               </div>
             </div>
 
-            <div class="col-12">
-              <div class="mb-3">
-                <label class="form-label" for="libelle">Libelle</label>
-                <input class="form-control" id="libelle" type="text" formControlName="libelle">
-              </div>
-            </div>
           </div>
           <c-modal-footer>
             <button (click)="toggleLiveDemo()" cButton color="secondary">
@@ -44,7 +41,7 @@
         <!-- Position Column -->
         <ng-container matColumnDef="uuid">
           <th mat-header-cell *matHeaderCellDef> UUID. </th>
-          <td mat-cell *matCellDef="let element" class="fw-bold"> {{ element.uuid | slice:0:8 }}{{ element.uuid.length > 8 ? '...' : '' }}
+          <td mat-cell *matCellDef="let element" class="fw-bold"> {{ element.uuid }}
           </td>
         </ng-container>
 
@@ -52,20 +49,19 @@
         <ng-container matColumnDef="icon">
           <th mat-header-cell *matHeaderCellDef> Icon </th>
           <td mat-cell *matCellDef="let element">
-            <img ngSrc="assets/uploads/images/{{element.image}}" alt="{{element.nom}}" width="60" height="60">
+            <i class="{{ element.icon }}" style="font-size: 20px"></i>
           </td>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="libelle">
           <th mat-header-cell *matHeaderCellDef> Libelle </th>
-          <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.libelle}} </td>
         </ng-container>
 
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef> Actions </th>
           <td mat-cell *matCellDef="let element">
-            <a [routerLink]="['edit', element.uuid]" class="btn btn-outline-success me-2" ><i class="fa-regular fa-pen-to-square"></i></a>
             <button type="button" (click)="delete(element.uuid)" class="btn btn-outline-danger" ><i class="fa-regular fa-trash-can"></i></button>
           </td>
         </ng-container>

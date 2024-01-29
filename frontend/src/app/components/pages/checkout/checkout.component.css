@@ -226,6 +226,13 @@ table.order_item_age_prices td {
   border-color: var(--primary)
 }
 
+.checkout_form_submit:disabled{
+  background-color: var(--lighterer);
+  border-color: var(--lighterer);
+  color: #fff;
+  cursor: not-allowed;
+}
+
 #checkout_form .input_group>div input:focus,#edit_user_profile .input_group>div input:focus {
   outline: none
 }
